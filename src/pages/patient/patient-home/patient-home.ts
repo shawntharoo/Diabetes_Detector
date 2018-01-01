@@ -33,6 +33,9 @@ export class PatientHomePage {
     public getTxtFrmRep: GetTextFromReportProvider,
     public alertCtrl: AlertController
   ) {}
+  ionViewDidEnter(){
+   
+  }
   callCam() {
     let alert = this.alertCtrl.create();
     alert.setTitle("Report Type");
@@ -102,7 +105,7 @@ export class PatientHomePage {
         this.getTxtFrmRep
           .getText(imageData, JSON.parse(searchTerms))
           .then(response => {
-            this.visionres = response;
+            this.showSymptomsModal(this.reportType,response);
           })
           .catch(error => {
             this.visionres = JSON.stringify(error);
