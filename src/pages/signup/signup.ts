@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, LoadingController,
-    AlertController } from 'ionic-angular';
+import {
+    IonicPage, NavController, LoadingController,
+    AlertController
+} from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import { EmailValidator } from '../../validators/email';
-import {HomePage}from'../home/home';
+import { HomePage } from '../home/home';
 
 
 /**
@@ -15,8 +17,8 @@ import {HomePage}from'../home/home';
  */
 @IonicPage()
 @Component({
-  selector: 'page-signup',
-  templateUrl: 'signup.html',
+    selector: 'page-signup',
+    templateUrl: 'signup.html',
 })
 export class Signup {
 
@@ -38,7 +40,7 @@ export class Signup {
      * If the form is valid it will call the AuthData service to sign the user up password displaying a loading
      *  component while the user waits.
      *
-     * If the form is invalid it will just log the form value, feel free to handle that as you like.
+     * If the form is invalid it will just log the form value.
      */
     signupUser() {
         if (!this.signupForm.valid) {

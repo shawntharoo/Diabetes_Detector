@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams, LoadingController,
     AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-
 import { EmailValidator } from '../../validators/email';
-import { AuthData } from '../../providers/auth-data';
-import {HomePage}from'../home/home';
-
 import { ResetPassword } from '../reset-password/reset-password';
 import { Signup } from '../signup/signup';
+import { AuthData } from '../../providers/auth-data';
+import { TabsPage } from '../tabs/tabs';
 /**
  * Generated class for the Login page.
  *
@@ -20,14 +18,14 @@ import { Signup } from '../signup/signup';
     selector: 'page-login',
     templateUrl: 'login.html',
 })
-export class Login {
+export class LoginPage {
     public loginForm;
     loading: any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams
         , public formBuilder: FormBuilder,
-        public alertCtrl: AlertController, public loadingCtrl: LoadingController,
-        public authData: AuthData, public nav: NavController) {
+        public alertCtrl: AlertController, public loadingCtrl: LoadingController, public nav: NavController,
+        public authData: AuthData) {
 
         this.loginForm = formBuilder.group({
             email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -40,9 +38,9 @@ export class Login {
         if (!this.loginForm.valid) {
             console.log(this.loginForm.value);
         } else {
-            this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then(authData => {
+            this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.nav.setRoot(HomePage);
+                    this.nav.setRoot(TabsPage);
                 });
             }, error => {
                 this.loading.dismiss().then(() => {

@@ -7,17 +7,17 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
+import { ResetPassword }from '../pages/reset-password/reset-password';
+import { Signup } from '../pages/signup/signup';
+import { AuthData } from '../providers/auth-data';
 
-import { Login } from '../pages/login/login';
-
-import {ResetPassword}from '../pages/reset-password/reset-password';
-import {Signup} from '../pages/signup/signup';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { firebaseConfig } from '../config';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { AuthData } from '../providers/auth-data';
-
 
 @NgModule({
   declarations: [
@@ -25,14 +25,15 @@ import { AuthData } from '../providers/auth-data';
     AboutPage,
     ContactPage,
     HomePage,
-      TabsPage,
-      Login,
-      ResetPassword,
-      Signup
+    TabsPage,
+    LoginPage,
+    ResetPassword,
+    Signup
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig.fire),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,16 +41,17 @@ import { AuthData } from '../providers/auth-data';
     AboutPage,
     ContactPage,
     HomePage,
-      TabsPage,
-      Login,
-      ResetPassword,
-      Signup
+    TabsPage,
+    LoginPage,
+    ResetPassword,
+    Signup
   ],
   providers: [
-      AuthData,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AngularFireAuth,
+    AuthData
   ]
 })
 export class AppModule {}
