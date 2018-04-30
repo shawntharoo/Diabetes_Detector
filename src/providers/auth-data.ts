@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class AuthData {
-  private user: firebase.User;
 
-  constructor(public afAuth: AngularFireAuth) {
-    afAuth.authState.subscribe(user => {
-      this.user = user;
-    });
+  constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
+
   }
 
   signInWithEmail(credentials) {
@@ -46,14 +44,10 @@ export class AuthData {
 
   signupUser(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((newUser) => {
-      firebase.database().ref('/users').child(email).set({
-         firstName: "anonymous",
-        id:newUser.uid,
-      });
-        firebase.database().ref('/userProfile').child(newUser.uid).set({
-            firstName: "anonymous",
-             email: email
-      });
+      //   firebase.database().ref('/userProfile').child(newUser.uid).set({
+      //       firstName: "anonymous",
+      //        email: email
+      // });
     });
   }
 
@@ -63,6 +57,10 @@ export class AuthData {
 
   logoutUser() {
     return this.afAuth.auth.signOut();
+  }
+
+  databaseTest() {
+    return this.db.list('userProfile');
   }
 
 }

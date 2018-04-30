@@ -7,12 +7,6 @@ import { ResetPassword } from '../reset-password/reset-password';
 import { Signup } from '../signup/signup';
 import { AuthData } from '../../providers/auth-data';
 import { TabsPage } from '../tabs/tabs';
-/**
- * Generated class for the Login page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @Component({
     selector: 'page-login',
