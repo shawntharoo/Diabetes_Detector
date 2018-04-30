@@ -23,7 +23,7 @@ export class MyApp {
 
     } else {
         console.log("login");
-      //  this.authData.logoutUser();
+        this.authData.logoutUser();
         this.rootPage = TabsPage;
 
 

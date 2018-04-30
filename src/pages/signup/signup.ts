@@ -6,7 +6,7 @@ import {
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import { EmailValidator } from '../../validators/email';
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 
 
 /**
@@ -49,7 +49,7 @@ export class Signup {
             this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
                 .then(() => {
                     this.loading.dismiss().then(() => {
-                        this.nav.setRoot(HomePage);
+                        this.nav.setRoot(TabsPage);
                     });
                 }, (error) => {
                     this.loading.dismiss().then(() => {

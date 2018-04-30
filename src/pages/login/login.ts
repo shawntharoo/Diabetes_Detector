@@ -62,6 +62,14 @@ export class LoginPage {
         }
     }
 
+    loginWithGoogle() {
+        this.authData.signInWithGoogle()
+          .then(
+            () => this.navCtrl.setRoot(TabsPage),
+            error => console.log(error.message)
+          );
+      }
+
     goToSignup(): void {
         this.nav.push(Signup);
     }
