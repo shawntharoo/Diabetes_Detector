@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Item } from 'ionic-angular';
 
 @Injectable()
 export class AuthData {
@@ -60,7 +61,7 @@ export class AuthData {
   }
 
   databaseTest() {
-    return this.db.list('userProfile');
+    return this.db.list<Item>('userProfile');
   }
 
 }

@@ -10,9 +10,8 @@ import { Observable } from '@firebase/util';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  billList: AngularFireList<any>;
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData) {
-//  this.shopping = this.authData.databaseTest().snapshotChanges().map(changes => {
+//  this.authData.databaseTest().snapshotChanges().map(changes => {
 //    changes.map(c => {
 //     console.log(c);
 //     ({
@@ -20,6 +19,8 @@ export class HomePage {
 //   })
 // })
 // })
+
+this.authData.databaseTest().valueChanges().subscribe(item => console.log(item));
   }
 
   logout() {
