@@ -43,13 +43,27 @@ export class AuthData {
     }
   }
 
-  signupUser(email: string, password: string, role: string) {
+  signupUser(firstname: string, lastname: string, email: string, password: string, role: string, regNo: string, doctor: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((newUser) => {
-      this.db.list('userProfile').push({
-        email : email,
-        role : role,
-        firstname : 'anonymous'
-      })
+      var emailt = this.transform(email);
+      if(role == 'doctor'){
+        this.db.list('DoctorProfiles').set(emailt,{
+          email : email,
+          role : role,
+          firstname : firstname,
+          lastname : lastname,
+          reg_no : regNo
+        })
+      }else if(role == 'patient'){
+        this.db.list('UserProfiles').set(emailt,{
+          email : email,
+          role : role,
+          firstname : firstname,
+          lastname : lastname,
+          doctor : doctor
+        })
+      }
+
     });
   }
 
@@ -61,8 +75,8 @@ export class AuthData {
     return this.afAuth.auth.signOut();
   }
 
-  databaseTest() {
-    return this.db.list<Item>('userProfile');
+  transform(email) {
+    return email.replace(/\./g,',');
   }
 
 }

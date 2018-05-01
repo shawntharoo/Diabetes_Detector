@@ -10,4 +10,8 @@ export class PatientData {
 
   }
 
+  loadAllDoctors(){
+    return this.db.list<Item>('DoctorProfiles');
+  }
+
 }
