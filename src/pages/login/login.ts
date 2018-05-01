@@ -6,7 +6,7 @@ import { EmailValidator } from '../../validators/email';
 import { ResetPassword } from '../reset-password/reset-password';
 import { Signup } from '../signup/signup';
 import { AuthData } from '../../providers/auth-data';
-import { TabsPage } from '../tabs/tabs';
+import { DoctorTabsPage } from '../doctor/tabs/tabs';
 
 @Component({
     selector: 'page-login',
@@ -34,7 +34,7 @@ export class LoginPage {
         } else {
             this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.nav.setRoot(TabsPage);
+                    this.nav.setRoot(DoctorTabsPage);
                 });
             }, error => {
                 this.loading.dismiss().then(() => {
@@ -59,7 +59,7 @@ export class LoginPage {
     loginWithGoogle() {
         this.authData.signInWithGoogle()
           .then(
-            () => this.navCtrl.setRoot(TabsPage),
+            () => this.navCtrl.setRoot(DoctorTabsPage),
             error => console.log(error.message)
           );
       }

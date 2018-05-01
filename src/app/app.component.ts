@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
-import { TabsPage } from '../pages/tabs/tabs';
+import { DoctorTabsPage } from '../pages/doctor/tabs/tabs';
 import { AuthData } from '../providers/auth-data';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -19,7 +19,7 @@ export class MyApp {
       if (!user) {
         this.rootPage = LoginPage;
     } else {
-        this.rootPage = TabsPage;
+        this.rootPage = DoctorTabsPage;
     }
     });
     platform.ready().then(() => {

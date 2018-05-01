@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { DoctorAboutPatientPage } from '../pages/doctor/about/about';
+import { ContactPage } from '../pages/doctor/contact/contact';
+import { DoctorHomePage } from '../pages/doctor/home/home';
+import { DoctorTabsPage } from '../pages/doctor/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { ResetPassword }from '../pages/reset-password/reset-password';
 import { Signup } from '../pages/signup/signup';
 import { AuthData } from '../providers/auth-data';
+import { PatientData } from '../providers/patient-data';
+import { DoctorData } from '../providers/doctor-data';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -23,10 +25,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    DoctorAboutPatientPage,
     ContactPage,
-    HomePage,
-    TabsPage,
+    DoctorHomePage,
+    DoctorTabsPage,
     LoginPage,
     ResetPassword,
     Signup
@@ -39,10 +41,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    DoctorAboutPatientPage,
     ContactPage,
-    HomePage,
-    TabsPage,
+    DoctorHomePage,
+    DoctorTabsPage,
     LoginPage,
     ResetPassword,
     Signup
@@ -53,7 +55,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth,
     AngularFireDatabase,
-    AuthData
+    AuthData,
+    PatientData,
+    DoctorData
   ]
 })
 export class AppModule {}

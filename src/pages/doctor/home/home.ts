@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
-import { AuthData } from '../../providers/auth-data';
+import { AuthData } from '../../../providers/auth-data';
+import { DoctorData } from '../../../providers/doctor-data';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
-import { AboutPage } from '../about/about';
+import { DoctorAboutPatientPage } from '../about/about';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class DoctorHomePage {
   items: any[]
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData, public modalCtrl: ModalController) {
-    this.authData.databaseTest().valueChanges().subscribe(item => {
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData , public doctorData: DoctorData, public modalCtrl: ModalController) {
+    this.doctorData.patientList().valueChanges().subscribe(item => {
       console.log(item)
       this.items = item
     });
@@ -44,7 +45,7 @@ export class HomePage {
   }
 
   itemSelected(item) {
-    let modal = this.modalCtrl.create(AboutPage, { patient: item});
+    let modal = this.modalCtrl.create(DoctorAboutPatientPage, { patient: item});
     modal.present();
   }
 
