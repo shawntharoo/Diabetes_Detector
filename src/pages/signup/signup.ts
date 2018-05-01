@@ -32,7 +32,8 @@ export class Signup {
 
         this.signupForm = formBuilder.group({
             email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-            password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+            password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+            role: ['', Validators.compose([Validators.required])]
         })
     }
 
@@ -46,7 +47,7 @@ export class Signup {
         if (!this.signupForm.valid) {
             console.log(this.signupForm.value);
         } else {
-            this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
+            this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password, this.signupForm.value.role)
                 .then(() => {
                     this.loading.dismiss().then(() => {
                         this.nav.setRoot(TabsPage);

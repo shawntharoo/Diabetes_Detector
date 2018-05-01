@@ -4,23 +4,20 @@ import { ActionSheetController } from 'ionic-angular';
 import { AuthData } from '../../providers/auth-data';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
+import { ModalController } from 'ionic-angular';
+import { AboutPage } from '../about/about';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData) {
-//  this.authData.databaseTest().snapshotChanges().map(changes => {
-//    changes.map(c => {
-//     console.log(c);
-//     ({
-//     val : c['payload'].key
-//   })
-// })
-// })
-
-this.authData.databaseTest().valueChanges().subscribe(item => console.log(item));
+  items: any[]
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData, public modalCtrl: ModalController) {
+    this.authData.databaseTest().valueChanges().subscribe(item => {
+      console.log(item)
+      this.items = item
+    });
   }
 
   logout() {
@@ -34,7 +31,7 @@ this.authData.databaseTest().valueChanges().subscribe(item => console.log(item))
             this.authData.logoutUser();
             console.log('Logout clicked');
           }
-        },{
+        }, {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
@@ -44,6 +41,11 @@ this.authData.databaseTest().valueChanges().subscribe(item => console.log(item))
       ]
     });
     actionSheet.present();
+  }
+
+  itemSelected(item) {
+    let modal = this.modalCtrl.create(AboutPage, { patient: item});
+    modal.present();
   }
 
 }

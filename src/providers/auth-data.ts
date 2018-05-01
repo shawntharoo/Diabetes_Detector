@@ -43,12 +43,13 @@ export class AuthData {
     }
   }
 
-  signupUser(email: string, password: string) {
+  signupUser(email: string, password: string, role: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((newUser) => {
-      //   firebase.database().ref('/userProfile').child(newUser.uid).set({
-      //       firstName: "anonymous",
-      //        email: email
-      // });
+      this.db.list('userProfile').push({
+        email : email,
+        role : role,
+        firstname : 'anonymous'
+      })
     });
   }
 
