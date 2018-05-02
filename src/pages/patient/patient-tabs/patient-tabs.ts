@@ -4,7 +4,7 @@ import { DoctorAboutPatientPage } from '../../doctor/about/about';
 import { ContactPage } from '../../doctor/contact/contact';
 
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'patient-tabs.html'
 })
 export class PatientTabsPage {
 

@@ -14,4 +14,8 @@ export class DoctorData {
     return this.db.list<Item>('userProfile');
   }
 
+  logginDoctor() {
+    
+  }
+
 }
