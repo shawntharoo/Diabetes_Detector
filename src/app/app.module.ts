@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { DoctorAboutPatientPage } from '../pages/doctor/about/about';
 import { ContactPage } from '../pages/doctor/contact/contact';
 import { DoctorHomePage } from '../pages/doctor/doctor-home/doctor-home';
+import { PatientHomePage } from '../pages/patient/patient-home/patient-home';
 import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
 import { DoctorLoginPage } from '../pages/doctor/doctor-login/doctor-login';
 import { PatientLoginPage } from '../pages/patient/patient-login/patient-login';
@@ -39,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     WelcomePage,
     PatientLoginPage,
     PatientSignup,
-    PatientTabsPage
+    PatientTabsPage,
+    PatientHomePage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     WelcomePage,
     PatientLoginPage,
     PatientSignup,
-    PatientTabsPage
+    PatientTabsPage,
+    PatientHomePage
   ],
   providers: [
     StatusBar,

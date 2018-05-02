@@ -35,7 +35,7 @@ export class DoctorLoginPage {
         } else {
             this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.doctorData.logginDoctor();
+                    this.doctorData.logginDoctor(this.loginForm.value.email);
                     this.nav.setRoot(DoctorTabsPage);
                 });
             }, error => {

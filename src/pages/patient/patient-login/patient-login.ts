@@ -6,6 +6,7 @@ import { EmailValidator } from '../../../validators/email';
 import { ResetPassword } from '../../reset-password/reset-password';
 import { PatientSignup } from '../patient-signup/patient-signup';
 import { AuthData } from '../../../providers/auth-data';
+import { PatientData } from '../../../providers/patient-data';
 import { PatientTabsPage } from '../patient-tabs/patient-tabs';
 
 @Component({
@@ -19,7 +20,7 @@ export class PatientLoginPage {
     constructor(public navCtrl: NavController, public navParams: NavParams
         , public formBuilder: FormBuilder,
         public alertCtrl: AlertController, public loadingCtrl: LoadingController, public nav: NavController,
-        public authData: AuthData) {
+        public authData: AuthData, public patientData: PatientData) {
 
         this.loginForm = formBuilder.group({
             email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -34,6 +35,7 @@ export class PatientLoginPage {
         } else {
             this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
+                    this.patientData.logginPatient(this.loginForm.value.email);
                     this.nav.setRoot(PatientTabsPage);
                 });
             }, error => {
