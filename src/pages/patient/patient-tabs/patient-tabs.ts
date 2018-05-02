@@ -8,11 +8,7 @@ import { PatientHomePage } from '../../patient/patient-home/patient-home';
   templateUrl: 'patient-tabs.html'
 })
 export class PatientTabsPage {
-<<<<<<< HEAD
-  tab1Root=ReportUploadPage;
-=======
   tab1Root = PatientHomePage;
->>>>>>> 8f3733c2ebec174c4b296058b0feeadf881ba7ee
   tab2Root = DoctorAboutPatientPage;
   tab3Root = ContactPage;
 
