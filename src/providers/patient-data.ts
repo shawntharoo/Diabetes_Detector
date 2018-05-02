@@ -14,4 +14,14 @@ export class PatientData {
     return this.db.list<Item>('DoctorProfiles');
   }
 
+  logginPatient(email) {
+    let transformedEmail = this.transform(email);
+    
+  }
+
+  
+  transform(email) {
+    return email.replace(/\./g, ',');
+  }
+
 }
