@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 import { DoctorAboutPatientPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import { DoctorHomePage } from '../home/home';
+import { DoctorHomePage } from '../doctor-home/doctor-home';
 
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'doctor-tabs.html'
 })
 export class DoctorTabsPage {
 

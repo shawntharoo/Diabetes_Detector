@@ -5,14 +5,17 @@ import { MyApp } from './app.component';
 
 import { DoctorAboutPatientPage } from '../pages/doctor/about/about';
 import { ContactPage } from '../pages/doctor/contact/contact';
-import { DoctorHomePage } from '../pages/doctor/home/home';
-import { DoctorTabsPage } from '../pages/doctor/tabs/tabs';
-import { LoginPage } from '../pages/login/login';
+import { DoctorHomePage } from '../pages/doctor/doctor-home/doctor-home';
+import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
+import { DoctorLoginPage } from '../pages/doctor/doctor-login/doctor-login';
+import { PatientLoginPage } from '../pages/patient/patient-login/patient-login';
 import { ResetPassword }from '../pages/reset-password/reset-password';
-import { Signup } from '../pages/signup/signup';
+import { DoctorSignup } from '../pages/doctor/doctor-signup/doctor-signup';
+import { PatientSignup } from '../pages/patient/patient-signup/patient-signup';
 import { AuthData } from '../providers/auth-data';
 import { PatientData } from '../providers/patient-data';
 import { DoctorData } from '../providers/doctor-data';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -29,9 +32,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     DoctorHomePage,
     DoctorTabsPage,
-    LoginPage,
+    DoctorLoginPage,
     ResetPassword,
-    Signup
+    DoctorSignup,
+    WelcomePage,
+    PatientLoginPage,
+    PatientSignup
   ],
   imports: [
     BrowserModule,
@@ -45,9 +51,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     DoctorHomePage,
     DoctorTabsPage,
-    LoginPage,
+    DoctorLoginPage,
     ResetPassword,
-    Signup
+    DoctorSignup,
+    WelcomePage,
+    PatientLoginPage,
+    PatientSignup
   ],
   providers: [
     StatusBar,

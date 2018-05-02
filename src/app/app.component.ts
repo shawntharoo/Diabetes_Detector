@@ -3,8 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { LoginPage } from '../pages/login/login';
-import { DoctorTabsPage } from '../pages/doctor/tabs/tabs';
+import { WelcomePage } from '../pages/welcome/welcome';
+import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
 import { AuthData } from '../providers/auth-data';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -12,12 +12,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any = WelcomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public afAuth: AngularFireAuth, public authData: AuthData) {
     afAuth.authState.subscribe(user => {
       if (!user) {
-        this.rootPage = LoginPage;
+        this.rootPage = WelcomePage;
     } else {
         this.rootPage = DoctorTabsPage;
     }

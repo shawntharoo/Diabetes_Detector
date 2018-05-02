@@ -9,8 +9,8 @@ import { ModalController } from 'ionic-angular';
 import { DoctorAboutPatientPage } from '../about/about';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-doctorhome',
+  templateUrl: 'doctor-home.html'
 })
 export class DoctorHomePage {
   items: any[]

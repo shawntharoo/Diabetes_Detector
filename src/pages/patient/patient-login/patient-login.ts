@@ -2,17 +2,17 @@ import { Component } from '@angular/core';
 import {  NavController, NavParams, LoadingController,
     AlertController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { EmailValidator } from '../../validators/email';
-import { ResetPassword } from '../reset-password/reset-password';
-import { Signup } from '../signup/signup';
-import { AuthData } from '../../providers/auth-data';
-import { DoctorTabsPage } from '../doctor/tabs/tabs';
+import { EmailValidator } from '../../../validators/email';
+import { ResetPassword } from '../../reset-password/reset-password';
+import { PatientSignup } from '../patient-signup/patient-signup';
+import { AuthData } from '../../../providers/auth-data';
+import { PatientTabsPage } from '../patient-tabs/patient-tabs';
 
 @Component({
-    selector: 'page-login',
-    templateUrl: 'login.html',
+    selector: 'page-patientlogin',
+    templateUrl: 'patient-login.html',
 })
-export class LoginPage {
+export class PatientLoginPage {
     public loginForm;
     loading: any;
 
@@ -34,7 +34,7 @@ export class LoginPage {
         } else {
             this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.nav.setRoot(DoctorTabsPage);
+                    this.nav.setRoot(PatientTabsPage);
                 });
             }, error => {
                 this.loading.dismiss().then(() => {
@@ -59,16 +59,24 @@ export class LoginPage {
     loginWithGoogle() {
         this.authData.signInWithGoogle()
           .then(
-            () => this.navCtrl.setRoot(DoctorTabsPage),
+            () => this.navCtrl.setRoot(PatientTabsPage),
             error => console.log(error.message)
           );
       }
 
     goToSignup(): void {
-        this.nav.push(Signup);
+        this.nav.push(PatientSignup);
     }
 
     goToResetPassword(): void {
         this.nav.push(ResetPassword);
+    }
+
+    loginWithFacebook(): void {
+        this.authData.signInWithFacebook()
+            .then(
+                () => this.navCtrl.setRoot(PatientTabsPage),
+                error => console.log(error.message)
+            )
     }
 }

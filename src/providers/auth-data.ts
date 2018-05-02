@@ -12,10 +12,32 @@ export class AuthData {
 
   }
 
+  // signInWithPhoneNumber() {
+  //   this.afAuth.auth.useDeviceLanguage();
+  //   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+  //   var phoneNumber = getPhoneNumberFromUserInput();
+  //   var appVerifier = window.recaptchaVerifier;
+  //   firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+  //     .then(function (confirmationResult) {
+  //       // user in with confirmationResult.confirm(code).
+  //       window.confirmationResult = confirmationResult;
+  //     }).catch(function (error) {
+  //       window.recaptchaVerifier.render().then(function(widgetId) {
+  //         grecaptcha.reset(widgetId);
+  //       }
+  //     });
+  // }
+
   signInWithEmail(credentials) {
     console.log('Sign in with email');
     return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password);
   }
+
+  signInWithFacebook() {
+    console.log('Sign in with google');
+    return this.oauthSignIn(new firebase.auth.FacebookAuthProvider());
+  }
+
 
   signInWithGoogle() {
     console.log('Sign in with google');
@@ -43,26 +65,27 @@ export class AuthData {
     }
   }
 
-  signupUser(firstname: string, lastname: string, email: string, password: string, role: string, regNo: string, doctor: string) {
+  signupPatient(firstname: string, lastname: string, email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((newUser) => {
       var emailt = this.transform(email);
-      if(role == 'doctor'){
-        this.db.list('DoctorProfiles').set(emailt,{
-          email : email,
-          role : role,
-          firstname : firstname,
-          lastname : lastname,
-          reg_no : regNo
+      this.db.list('UserProfiles').set(emailt, {
+        email: email,
+        firstname: firstname,
+        lastname: lastname
+      })
+
+    });
+  }
+
+  signupDoctor(firstname: string, lastname: string, email: string, password: string, regNo: string) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((newUser) => {
+      var emailt = this.transform(email);
+        this.db.list('DoctorProfiles').set(emailt, {
+          email: email,
+          firstname: firstname,
+          lastname: lastname,
+          reg_no: regNo
         })
-      }else if(role == 'patient'){
-        this.db.list('UserProfiles').set(emailt,{
-          email : email,
-          role : role,
-          firstname : firstname,
-          lastname : lastname,
-          doctor : doctor
-        })
-      }
 
     });
   }
@@ -76,7 +99,7 @@ export class AuthData {
   }
 
   transform(email) {
-    return email.replace(/\./g,',');
+    return email.replace(/\./g, ',');
   }
 
 }
