@@ -15,6 +15,7 @@ export class PatientData {
   }
 
   logginPatient(email) {
+    let transformedEmail = this.transform(email);
     
   }
 

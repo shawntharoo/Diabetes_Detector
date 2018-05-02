@@ -14,10 +14,7 @@ import { ModalController } from 'ionic-angular';
 export class PatientHomePage {
   items: any[]
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData , public doctorData: DoctorData, public modalCtrl: ModalController) {
-    this.doctorData.patientList().valueChanges().subscribe(item => {
-      console.log(item)
-      this.items = item
-    });
+
   }
 
   logout() {
