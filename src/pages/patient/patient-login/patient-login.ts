@@ -35,8 +35,11 @@ export class PatientLoginPage {
         } else {
             this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.patientData.logginPatient(this.loginForm.value.email);
-                    this.nav.setRoot(PatientTabsPage);
+                    this.patientData.logginPatient(this.loginForm.value.email).valueChanges().subscribe(item => {
+                        if(item != null){
+                            this.nav.setRoot(PatientTabsPage);
+                        }
+                      });
                 });
             }, error => {
                 this.loading.dismiss().then(() => {

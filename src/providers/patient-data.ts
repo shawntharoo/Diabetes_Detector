@@ -16,7 +16,8 @@ export class PatientData {
 
   logginPatient(email) {
     let transformedEmail = this.transform(email);
-    
+    return this.db.object('/UserProfiles/' + transformedEmail);
+
   }
 
   

@@ -16,7 +16,7 @@ export class DoctorData {
 
   logginDoctor(email) {
     let transformedEmail = this.transform(email);
-
+    return this.db.object('/DoctorProfiles/' + transformedEmail);
   }
   
   transform(email) {

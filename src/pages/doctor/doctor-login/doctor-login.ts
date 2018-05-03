@@ -35,8 +35,11 @@ export class DoctorLoginPage {
         } else {
             this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.doctorData.logginDoctor(this.loginForm.value.email);
-                    this.nav.setRoot(DoctorTabsPage);
+                    this.doctorData.logginDoctor(this.loginForm.value.email).valueChanges().subscribe(item => {
+                        if(item != null){
+                            this.nav.setRoot(DoctorTabsPage);
+                        }
+                      });
                 });
             }, error => {
                 this.loading.dismiss().then(() => {
