@@ -5,9 +5,9 @@ import {
 } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../../providers/auth-data';
-import { PatientData } from '../../../providers/patient-data';
+import { DoctorData } from '../../../providers/doctor-data';
 import { EmailValidator } from '../../../validators/email';
-import { PatientTabsPage } from '../patient-tabs/patient-tabs';
+import { DoctorTabsPage } from '../doctor-tabs/doctor-tabs';
 
 
 /**
@@ -18,21 +18,22 @@ import { PatientTabsPage } from '../patient-tabs/patient-tabs';
  */
 @IonicPage()
 @Component({
-    selector: 'page-patientsignup',
-    templateUrl: 'patient-signup.html',
+    selector: 'page-doctorinitialdata',
+    templateUrl: 'doctor-initialData.html',
 })
-export class PatientSignup {
+export class DoctorInitialData {
 
-    public signupForm;
+    public InitialDataForm;
     loading: any;
 
     constructor(public nav: NavController, public authData: AuthData,
         public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController, public patientData: PatientData, ) {
+        public alertCtrl: AlertController, public doctorData: DoctorData) {
 
-        this.signupForm = formBuilder.group({
-            email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-            password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+        this.InitialDataForm = formBuilder.group({
+            firstname: ['', Validators.compose([Validators.required])],
+            lastname: ['', Validators.compose([Validators.required])],
+            regno: ['', Validators.compose([Validators.required])],
         })
     }
 
@@ -42,14 +43,14 @@ export class PatientSignup {
      *
      * If the form is invalid it will just log the form value.
      */
-    signupUser() {
-        if (!this.signupForm.valid) {
-            console.log(this.signupForm.value);
+    initialData() {
+        if (!this.InitialDataForm.valid) {
+            console.log(this.InitialDataForm.value);
         } else {
-            this.authData.signupPatient(this.signupForm.value.email, this.signupForm.value.password)
+            this.doctorData.initialDoctorData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.regno)
                 .then(() => {
                     this.loading.dismiss().then(() => {
-                        this.nav.setRoot(PatientTabsPage);
+                        this.nav.setRoot(DoctorTabsPage);
                     });
                 }, (error) => {
                     this.loading.dismiss().then(() => {

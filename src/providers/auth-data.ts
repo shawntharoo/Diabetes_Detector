@@ -4,11 +4,12 @@ import * as firebase from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Item } from 'ionic-angular';
+import { PatientData } from './patient-data';
 
 @Injectable()
 export class AuthData {
 
-  constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase) {
+  constructor(public afAuth: AngularFireAuth, public db: AngularFireDatabase, public patientData: PatientData) {
 
   }
 
@@ -46,23 +47,59 @@ export class AuthData {
 
   private oauthSignIn(provider: AuthProvider) {
     if (!(<any>window).cordova) {
-      return this.afAuth.auth.signInWithPopup(provider);
+      return this.afAuth.auth.signInWithPopup(provider)
+      .then((result) => {
+        console.log(result)
+          this.patientData.logginPatient(result.user.email).valueChanges().subscribe(item1 => {
+            var emailt = this.transform(result.user.email);
+            if (item1 != null) {
+           // This gives you a Google Access Token.
+          // You can use it to access the Google API.
+          let token = result.credential.accessToken;
+          // The signed-in user info.
+          let user = result.user;
+          console.log(token, user);
+            } else {
+              this.db.list('UserProfiles').set(emailt, {
+                email: result.user.email,
+                status: 0
+              })
+          // This gives you a Google Access Token.
+          // You can use it to access the Google API.
+          let token = result.credential.accessToken;
+          // The signed-in user info.
+          let user = result.user;
+          console.log(token, user);
+            }
+          });
+      });
+      
     } else {
       return this.afAuth.auth.signInWithRedirect(provider)
         .then(() => {
           return this.afAuth.auth.getRedirectResult().then(result => {
-            // var emailt = this.transform(result);
-            // this.db.list('UserProfiles').set(emailt, {
-            //   email: result,
-            // })
-
-            
+            this.patientData.logginPatient(result.user.email).valueChanges().subscribe(item1 => {
+              var emailt = this.transform(result.user.email);
+              if (item1 != null) {
+             // This gives you a Google Access Token.
+            // You can use it to access the Google API.
+            let token = result.credential.accessToken;
+            // The signed-in user info.
+            let user = result.user;
+            console.log(token, user);
+              } else {
+                this.db.list('UserProfiles').set(emailt, {
+                  email: result.user.email,
+                  status: 0
+                })
             // This gives you a Google Access Token.
             // You can use it to access the Google API.
             let token = result.credential.accessToken;
             // The signed-in user info.
             let user = result.user;
             console.log(token, user);
+              }
+            });
           }).catch(function (error) {
             // Handle Errors here.
             alert(error.message);
@@ -71,13 +108,12 @@ export class AuthData {
     }
   }
 
-  signupPatient(firstname: string, lastname: string, email: string, password: string) {
+  signupPatient(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((newUser) => {
       var emailt = this.transform(email);
       this.db.list('UserProfiles').set(emailt, {
         email: email,
-        firstname: firstname,
-        lastname: lastname
+        status: 0
       })
 
     });
@@ -86,12 +122,13 @@ export class AuthData {
   signupDoctor(firstname: string, lastname: string, email: string, password: string, regNo: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then((newUser) => {
       var emailt = this.transform(email);
-        this.db.list('DoctorProfiles').set(emailt, {
-          email: email,
-          firstname: firstname,
-          lastname: lastname,
-          reg_no: regNo
-        })
+      this.db.list('DoctorProfiles').set(emailt, {
+        email: email,
+        firstname: firstname,
+        lastname: lastname,
+        reg_no: regNo,
+        status: 1
+      })
 
     });
   }

@@ -15,23 +15,6 @@
 
 <ion-content padding>
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
-    <ion-item>
-      <ion-label stacked>First Name</ion-label>
-      <ion-input #firstname formControlName="firstname" type="text" placeholder="Your firstname" [class.invalid]="!signupForm.controls.firstname.valid && signupForm.controls.firstname.dirty">
-      </ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.firstname.valid  && signupForm.controls.firstname.dirty">
-      <p>Enter the firstname</p>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Last Name</ion-label>
-      <ion-input #lastname formControlName="lastname" type="text" placeholder="Your lastname" [class.invalid]="!signupForm.controls.lastname.valid && signupForm.controls.lastname.dirty">
-      </ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.lastname.valid  && signupForm.controls.lastname.dirty">
-      <p>Enter the lastname</p>
-    </ion-item>
 
     <ion-item>
       <ion-label stacked>Email</ion-label>
@@ -49,36 +32,6 @@
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
       <p>Your password needs more than 6 characters.</p>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Role</ion-label>
-      <ion-select formControlName="role" #role [class.invalid]="!signupForm.controls.role.valid && signupForm.controls.role.dirty">
-        <ion-option value="doctor">Doctor</ion-option>
-        <ion-option value="patient">Patient</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.role.valid  && signupForm.controls.role.dirty">
-      <p>Select a role.</p>
-    </ion-item>
-
-    <ion-item *ngIf="signupForm.value.role == 'doctor'">
-      <ion-label stacked>Reg No</ion-label>
-      <ion-input #regno formControlName="regno" type="text" placeholder="Your registration number" [class.invalid]="regerror">
-      </ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="regerror">
-      <p>Enter a register number.</p>
-    </ion-item>
-
-    <ion-item *ngIf="signupForm.value.role == 'patient'">
-      <ion-label>Doctor</ion-label>
-      <ion-select formControlName="doctor" #doctor [class.invalid]="docerror">
-        <ion-option *ngFor="let doc of doctors" value="{{doc.reg_no}}">{{doc.firstname}} {{doc.lastname}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="docerror">
-      <p>Select a doctor.</p>
     </ion-item>
 
     <button ion-button block type="submit">
