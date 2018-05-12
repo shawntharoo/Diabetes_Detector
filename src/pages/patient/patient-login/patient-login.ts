@@ -8,7 +8,9 @@ import { PatientSignup } from '../patient-signup/patient-signup';
 import { AuthData } from '../../../providers/auth-data';
 import { PatientData } from '../../../providers/patient-data';
 import { PatientTabsPage } from '../patient-tabs/patient-tabs';
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
     selector: 'page-patientlogin',
     templateUrl: 'patient-login.html',

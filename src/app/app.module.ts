@@ -4,7 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { DoctorAboutPatientPage } from '../pages/doctor/about/about';
-import { ContactPage } from '../pages/doctor/contact/contact';
 import { DoctorHomePage } from '../pages/doctor/doctor-home/doctor-home';
 import { PatientHomePage } from '../pages/patient/patient-home/patient-home';
 import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
@@ -33,7 +32,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     DoctorAboutPatientPage,
-    ContactPage,
     DoctorHomePage,
     DoctorTabsPage,
     DoctorLoginPage,
@@ -56,7 +54,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     DoctorAboutPatientPage,
-    ContactPage,
     DoctorHomePage,
     DoctorTabsPage,
     DoctorLoginPage,

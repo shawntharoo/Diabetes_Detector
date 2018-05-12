@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DoctorLoginPage } from '../doctor/doctor-login/doctor-login';
 import { PatientLoginPage } from '../patient/patient-login/patient-login';
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-welcome',
   templateUrl: 'welcome.html'

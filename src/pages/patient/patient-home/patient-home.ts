@@ -6,7 +6,9 @@ import { DoctorData } from '../../../providers/doctor-data';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-patienthome',
   templateUrl: 'patient-home.html'

@@ -8,7 +8,9 @@ import { DoctorSignup } from '../doctor-signup/doctor-signup';
 import { AuthData } from '../../../providers/auth-data';
 import { DoctorData } from '../../../providers/doctor-data';
 import { DoctorTabsPage } from '../doctor-tabs/doctor-tabs';
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
     selector: 'page-doctorlogin',
     templateUrl: 'doctor-login.html',
