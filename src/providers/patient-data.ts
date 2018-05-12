@@ -27,7 +27,7 @@ export class PatientData {
     return email.replace(/\./g, ',');
   }
 
-  initialDoctorData(firstname: String, lastname: String, doctor: String){
+  initialPatientData(firstname: String, lastname: String, doctor: String){
     var emailt = this.transform(this.user.email);
     return this.db.list('UserProfiles').set(emailt, {
        firstname: firstname,

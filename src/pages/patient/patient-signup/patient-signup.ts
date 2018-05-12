@@ -49,7 +49,6 @@ export class PatientSignup {
             this.authData.signupPatient(this.signupForm.value.email, this.signupForm.value.password)
                 .then(() => {
                     this.loading.dismiss().then(() => {
-                        this.nav.setRoot(PatientTabsPage);
                     });
                 }, (error) => {
                     this.loading.dismiss().then(() => {

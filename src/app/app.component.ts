@@ -25,15 +25,15 @@ export class MyApp {
       if (!user) {
         this.rootPage = WelcomePage;
       } else {
-        this.doctorData.logginDoctor(user.email).valueChanges().subscribe(item => {
-          if (item != null) {
-            if (item['status'] === 0) {
-              this.rootPage = DoctorInitialData;
-            } else {
-              this.rootPage = DoctorTabsPage;
-            }
-          }
-        });
+        // this.doctorData.logginDoctor(user.email).valueChanges().subscribe(item => {
+        //   if (item != null) {
+        //     if (item['status'] === 0) {
+        //       this.rootPage = DoctorInitialData;
+        //     } else {
+        //       this.rootPage = DoctorTabsPage;
+        //     }
+        //   }
+        // });
         this.patientData.logginPatient(user.email).valueChanges().subscribe(item1 => {
           if (item1 != null) {
             if (item1['status'] === 0) {

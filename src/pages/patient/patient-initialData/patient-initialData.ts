@@ -50,7 +50,7 @@ export class PatientInitialData {
         if (!this.InitialDataForm.valid) {
             console.log(this.InitialDataForm.value);
         } else {
-            this.patientData.initialDoctorData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor)
+            this.patientData.initialPatientData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor)
                 .then(() => {
                     this.loading.dismiss().then(() => {
                         this.nav.setRoot(PatientTabsPage);

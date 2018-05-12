@@ -19,6 +19,7 @@ import { PatientData } from '../providers/patient-data';
 import { DoctorData } from '../providers/doctor-data';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
+import { DoctorHistoryPage } from '../pages/doctor/doctor-history/doctor-history';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -43,7 +44,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PatientTabsPage,
     PatientHomePage,
     DoctorInitialData,
-    PatientInitialData
+    PatientInitialData,
+    DoctorHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PatientTabsPage,
     PatientHomePage,
     DoctorInitialData,
-    PatientInitialData
+    PatientInitialData,
+    DoctorHistoryPage
   ],
   providers: [
     StatusBar,

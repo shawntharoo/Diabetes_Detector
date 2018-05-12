@@ -37,7 +37,7 @@
     <ion-item>
       <ion-label>Doctor</ion-label>
       <ion-select formControlName="doctor" #doctor [class.invalid]="!InitialDataForm.controls.doctor.valid && InitialDataForm.controls.doctor.dirty">
-        <ion-option *ngFor="let doc of doctors" value="{{doc.reg_no}}">{{doc.firstname}} {{doc.lastname}}</ion-option>
+        <ion-option *ngFor="let doc of doctors" value="{{doc.email}}">{{doc.firstname}} {{doc.lastname}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item class="error-message" *ngIf="!InitialDataForm.controls.doctor.valid && InitialDataForm.controls.doctor.dirty">
