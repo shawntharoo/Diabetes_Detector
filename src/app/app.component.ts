@@ -5,11 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { WelcomePage } from '../pages/welcome/welcome';
 import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
+import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
 import { AuthData } from '../providers/auth-data';
 import { PatientData } from '../providers/patient-data';
 import { DoctorData } from '../providers/doctor-data';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
 import { DoctorInitialData } from '../pages/doctor/doctor-initialData/doctor-initialData';
 import { PatientInitialData } from '../pages/patient/patient-initialData/patient-initialData';
 
