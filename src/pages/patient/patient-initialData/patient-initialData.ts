@@ -18,21 +18,25 @@ import { PatientTabsPage } from '../patient-tabs/patient-tabs';
  */
 @IonicPage()
 @Component({
-    selector: 'page-patientsignup',
-    templateUrl: 'patient-signup.html',
+    selector: 'page-patientinitialdata',
+    templateUrl: 'patient-initialData.html',
 })
-export class PatientSignup {
+export class PatientInitialData {
 
-    public signupForm;
+    public InitialDataForm;
     loading: any;
+    doctors: any[]
 
     constructor(public nav: NavController, public authData: AuthData,
         public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController, public patientData: PatientData, ) {
+        public alertCtrl: AlertController, public patientData: PatientData) {
 
-        this.signupForm = formBuilder.group({
-            email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-            password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+        this.patientData.loadAllDoctors().valueChanges().subscribe(doctor => this.doctors = doctor)
+
+        this.InitialDataForm = formBuilder.group({
+            firstname: ['', Validators.compose([Validators.required])],
+            lastname: ['', Validators.compose([Validators.required])],
+            doctor: ['', Validators.compose([Validators.required])],
         })
     }
 
@@ -42,13 +46,14 @@ export class PatientSignup {
      *
      * If the form is invalid it will just log the form value.
      */
-    signupUser() {
-        if (!this.signupForm.valid) {
-            console.log(this.signupForm.value);
+    initialData() {
+        if (!this.InitialDataForm.valid) {
+            console.log(this.InitialDataForm.value);
         } else {
-            this.authData.signupPatient(this.signupForm.value.email, this.signupForm.value.password)
+            this.patientData.initialPatientData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor)
                 .then(() => {
                     this.loading.dismiss().then(() => {
+                        this.nav.setRoot(PatientTabsPage);
                     });
                 }, (error) => {
                     this.loading.dismiss().then(() => {

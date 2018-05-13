@@ -4,7 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { DoctorAboutPatientPage } from '../pages/doctor/about/about';
-import { ContactPage } from '../pages/doctor/contact/contact';
 import { DoctorHomePage } from '../pages/doctor/doctor-home/doctor-home';
 import { PatientHomePage } from '../pages/patient/patient-home/patient-home';
 import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
@@ -12,12 +11,15 @@ import { DoctorLoginPage } from '../pages/doctor/doctor-login/doctor-login';
 import { PatientLoginPage } from '../pages/patient/patient-login/patient-login';
 import { ResetPassword }from '../pages/reset-password/reset-password';
 import { DoctorSignup } from '../pages/doctor/doctor-signup/doctor-signup';
+import { DoctorInitialData } from '../pages/doctor/doctor-initialData/doctor-initialData';
+import { PatientInitialData } from '../pages/patient/patient-initialData/patient-initialData';
 import { PatientSignup } from '../pages/patient/patient-signup/patient-signup';
 import { AuthData } from '../providers/auth-data';
 import { PatientData } from '../providers/patient-data';
 import { DoctorData } from '../providers/doctor-data';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
+import { DoctorHistoryPage } from '../pages/doctor/doctor-history/doctor-history';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -44,7 +46,6 @@ class CameraMock extends Camera {
   declarations: [
     MyApp,
     DoctorAboutPatientPage,
-    ContactPage,
     DoctorHomePage,
     DoctorTabsPage,
     DoctorLoginPage,
@@ -54,7 +55,10 @@ class CameraMock extends Camera {
     PatientLoginPage,
     PatientSignup,
     PatientTabsPage,
-    PatientHomePage
+    PatientHomePage,
+    DoctorInitialData,
+    PatientInitialData,
+    DoctorHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,6 @@ class CameraMock extends Camera {
   entryComponents: [
     MyApp,
     DoctorAboutPatientPage,
-    ContactPage,
     DoctorHomePage,
     DoctorTabsPage,
     DoctorLoginPage,
@@ -76,7 +79,10 @@ class CameraMock extends Camera {
     PatientLoginPage,
     PatientSignup,
     PatientTabsPage,
-    PatientHomePage
+    PatientHomePage,
+    DoctorInitialData,
+    PatientInitialData,
+    DoctorHistoryPage
   ],
   providers: [
     StatusBar,

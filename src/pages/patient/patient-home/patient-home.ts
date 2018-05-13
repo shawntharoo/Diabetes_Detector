@@ -6,8 +6,14 @@ import { DoctorData } from '../../../providers/doctor-data';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
+<<<<<<< HEAD
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { GoogleCloudVisionServiceProvider } from '../../../providers/google-cloud-vision-service/google-cloud-vision-service';
+=======
+import { IonicPage } from 'ionic-angular';
+
+@IonicPage()
+>>>>>>> cf75488c7d8f6b8617e0040ff4e9b1ae91f7981c
 @Component({
   selector: 'page-patienthome',
   templateUrl: 'patient-home.html'

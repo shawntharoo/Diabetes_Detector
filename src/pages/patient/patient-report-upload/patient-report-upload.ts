@@ -10,10 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-report-upload',
-  templateUrl: 'report-upload.html',
+  selector: 'page-patient-report-upload',
+  templateUrl: 'patient-report-upload.html',
 })
-export class ReportUploadPage {
+export class PatientReportUploadPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

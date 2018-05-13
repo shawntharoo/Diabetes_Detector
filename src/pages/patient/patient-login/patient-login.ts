@@ -8,7 +8,9 @@ import { PatientSignup } from '../patient-signup/patient-signup';
 import { AuthData } from '../../../providers/auth-data';
 import { PatientData } from '../../../providers/patient-data';
 import { PatientTabsPage } from '../patient-tabs/patient-tabs';
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
     selector: 'page-patientlogin',
     templateUrl: 'patient-login.html',
@@ -35,8 +37,11 @@ export class PatientLoginPage {
         } else {
             this.authData.signInWithEmail(this.loginForm.value).then(authData => {
                 this.loading.dismiss().then(() => {
-                    this.patientData.logginPatient(this.loginForm.value.email);
-                    this.nav.setRoot(PatientTabsPage);
+                    this.patientData.logginPatient(this.loginForm.value.email).valueChanges().subscribe(item => {
+                        if(item != null){
+                            this.nav.setRoot(PatientTabsPage);
+                        }
+                      });
                 });
             }, error => {
                 this.loading.dismiss().then(() => {

@@ -52,33 +52,12 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Role</ion-label>
-      <ion-select formControlName="role" #role [class.invalid]="!signupForm.controls.role.valid && signupForm.controls.role.dirty">
-        <ion-option value="doctor">Doctor</ion-option>
-        <ion-option value="patient">Patient</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.role.valid  && signupForm.controls.role.dirty">
-      <p>Select a role.</p>
-    </ion-item>
-
-    <ion-item *ngIf="signupForm.value.role == 'doctor'">
       <ion-label stacked>Reg No</ion-label>
-      <ion-input #regno formControlName="regno" type="text" placeholder="Your registration number" [class.invalid]="regerror">
+      <ion-input #regno formControlName="regno" type="text" placeholder="Your registration number" [class.invalid]="!signupForm.controls.regno.valid && signupForm.controls.regno.dirty">
       </ion-input>
     </ion-item>
-    <ion-item class="error-message" *ngIf="regerror">
+    <ion-item class="error-message" *ngIf="!signupForm.controls.regno.valid && signupForm.controls.regno.dirty">
       <p>Enter a register number.</p>
-    </ion-item>
-
-    <ion-item *ngIf="signupForm.value.role == 'patient'">
-      <ion-label>Doctor</ion-label>
-      <ion-select formControlName="doctor" #doctor [class.invalid]="docerror">
-        <ion-option *ngFor="let doc of doctors" value="{{doc.reg_no}}">{{doc.firstname}} {{doc.lastname}}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="docerror">
-      <p>Select a doctor.</p>
     </ion-item>
 
     <button ion-button block type="submit">
