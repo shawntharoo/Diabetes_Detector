@@ -32,7 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 import { Camera } from '@ionic-native/camera';
-import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
+import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service';
 import { HttpModule } from '@angular/http';
 
 class CameraMock extends Camera {

@@ -7,7 +7,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { GoogleCloudVisionServiceProvider } from '../../../providers/google-cloud-vision-service/google-cloud-vision-service';
+import { GoogleCloudVisionServiceProvider } from '../../../providers/google-cloud-vision-service';
 @Component({
   selector: 'page-patienthome',
   templateUrl: 'patient-home.html'
@@ -41,6 +41,7 @@ export class PatientHomePage {
       console.log(err);
     });
   }
+  
   logout() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Modify your album',
