@@ -6,7 +6,7 @@ import { DoctorData } from '../../../providers/doctor-data';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
-import { DoctorAboutPatientPage } from '../about/about';
+import { DoctorAboutPatientPage } from '../doctor-aboutpatient/doctor-aboutpatient';
 import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
@@ -17,8 +17,7 @@ import { IonicPage } from 'ionic-angular';
 export class DoctorHomePage {
   items: any[]
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData , public doctorData: DoctorData, public modalCtrl: ModalController) {
-    this.doctorData.patientList().valueChanges().subscribe(item => {
-      console.log(item)
+    this.doctorData.patientNotification().valueChanges().subscribe(item => {
       this.items = item
     });
   }

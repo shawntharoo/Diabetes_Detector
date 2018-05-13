@@ -8,7 +8,7 @@
   <h2>All the Patients</h2>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{ item.email }}
+      {{ item.firstname }} {{item.lastname}}
     </button>  
   </ion-list>
 

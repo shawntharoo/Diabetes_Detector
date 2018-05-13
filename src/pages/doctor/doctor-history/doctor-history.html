@@ -7,11 +7,10 @@
 </ion-header>
 
 <ion-content>
+  <h2>All the Patients</h2>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item.firstname }} {{item.lastname}}
+    </button>  
   </ion-list>
 </ion-content>

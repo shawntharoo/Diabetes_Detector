@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { DoctorAboutPatientPage } from '../about/about';
 import { DoctorHistoryPage } from '../doctor-history/doctor-history';
 import { DoctorHomePage } from '../doctor-home/doctor-home';
 import { IonicPage } from 'ionic-angular';
@@ -12,8 +11,7 @@ import { IonicPage } from 'ionic-angular';
 export class DoctorTabsPage {
 
   tab1Root = DoctorHomePage;
-  tab2Root = DoctorAboutPatientPage;
-  tab3Root = DoctorHistoryPage;
+  tab2Root = DoctorHistoryPage;
 
   constructor() {
 

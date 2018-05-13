@@ -13,8 +13,16 @@ user : any;
     });
   }
 
-  patientList() {
-    return this.db.list<Item>('userProfile');
+  patientNotification(){
+    return this.db.list<Item>('UserProfiles');
+  }
+
+  patientList(user) {
+    return this.db.list<Item>('UserProfiles', ref => ref.orderByChild('doctor').equalTo(user.email));
+  }
+
+  patientHistory() {
+    
   }
 
   logginDoctor(email) {

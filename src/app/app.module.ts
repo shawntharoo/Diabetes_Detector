@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { DoctorAboutPatientPage } from '../pages/doctor/about/about';
+import { DoctorAboutPatientPage } from '../pages/doctor/doctor-aboutpatient/doctor-aboutpatient';
 import { DoctorHomePage } from '../pages/doctor/doctor-home/doctor-home';
 import { PatientHomePage } from '../pages/patient/patient-home/patient-home';
 import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
@@ -20,6 +20,7 @@ import { DoctorData } from '../providers/doctor-data';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
 import { DoctorHistoryPage } from '../pages/doctor/doctor-history/doctor-history';
+import { DoctorPatientHistoryPage } from '../pages/doctor/doctor-patienthistory/doctor-patienthistory';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -45,7 +46,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PatientHomePage,
     DoctorInitialData,
     PatientInitialData,
-    DoctorHistoryPage
+    DoctorHistoryPage,
+    DoctorPatientHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     PatientHomePage,
     DoctorInitialData,
     PatientInitialData,
-    DoctorHistoryPage
+    DoctorHistoryPage,
+    DoctorPatientHistoryPage
   ],
   providers: [
     StatusBar,
