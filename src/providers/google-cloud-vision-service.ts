@@ -1,7 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { GoogleConfig } from '../../config';
+import { GoogleConfig } from '../config';
 
 /*
   Generated class for the GoogleCloudVisionServiceProvider provider.
