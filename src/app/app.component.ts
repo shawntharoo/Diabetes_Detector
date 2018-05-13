@@ -10,7 +10,6 @@ import { AuthData } from '../providers/auth-data';
 import { PatientData } from '../providers/patient-data';
 import { DoctorData } from '../providers/doctor-data';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
 import { DoctorInitialData } from '../pages/doctor/doctor-initialData/doctor-initialData';
 import { PatientInitialData } from '../pages/patient/patient-initialData/patient-initialData';
 
@@ -26,10 +25,6 @@ export class MyApp {
       if (!user) {
         this.rootPage = WelcomePage;
       } else {
-<<<<<<< HEAD
-
-        this.rootPage = PatientTabsPage;
-=======
         // this.doctorData.logginDoctor(user.email).valueChanges().subscribe(item => {
         //   if (item != null) {
         //     if (item['status'] === 0) {
@@ -48,7 +43,6 @@ export class MyApp {
             }
           }
         });
->>>>>>> cf75488c7d8f6b8617e0040ff4e9b1ae91f7981c
       }
     });
     platform.ready().then(() => {
