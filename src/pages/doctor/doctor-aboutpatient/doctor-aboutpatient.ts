@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-doctoraboutpatient',
   templateUrl: 'doctor-aboutpatient.html'
 })
 export class DoctorAboutPatientPage {
-
-  constructor(public navCtrl: NavController) {
-
+  patient: any;
+  constructor(public navCtrl: NavController, public params: NavParams) {
+    this.patient = params.get('patient');
   }
 
 }
