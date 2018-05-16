@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../../providers/auth-data';
 import { PatientData } from '../../../providers/patient-data';
 import { EmailValidator } from '../../../validators/email';
-import { PatientTabsPage } from '../patient-tabs/patient-tabs';
+import { PatientPaymentPage } from '../patient-payment/patient-payment';
 
 
 /**
@@ -53,7 +53,7 @@ export class PatientInitialData {
             this.patientData.initialPatientData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor)
                 .then(() => {
                     this.loading.dismiss().then(() => {
-                        this.nav.setRoot(PatientTabsPage);
+                        this.nav.setRoot(PatientPaymentPage);
                     });
                 }, (error) => {
                     this.loading.dismiss().then(() => {

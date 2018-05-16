@@ -31,9 +31,8 @@ export class PatientHomePage {
     }
     this.camera.getPicture(options).then((imageData) => {
       this.vision.getLabels(imageData).subscribe((result) => {
-        console.log(result.json().responses[0].textAnnotations[0].description
-        );
-        this.visionres=result.json().responses[0].textAnnotations[0].description
+        let base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.visionres = result.json().responses[0].textAnnotations[0].description
       }, err => {
         console.log(err);
       });
@@ -41,7 +40,7 @@ export class PatientHomePage {
       console.log(err);
     });
   }
-  
+
   logout() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Modify your album',
