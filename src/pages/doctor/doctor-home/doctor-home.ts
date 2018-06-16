@@ -8,6 +8,7 @@ import { Observable } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
 import { DoctorAboutPatientPage } from '../doctor-aboutpatient/doctor-aboutpatient';
 import { IonicPage } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -16,10 +17,12 @@ import { IonicPage } from 'ionic-angular';
 })
 export class DoctorHomePage {
   items: any[]
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData , public doctorData: DoctorData, public modalCtrl: ModalController) {
-    this.doctorData.patientNotification().valueChanges().subscribe(item => {
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData , public doctorData: DoctorData, public modalCtrl: ModalController, public afAuth: AngularFireAuth) {
+    afAuth.authState.subscribe(user => {
+    this.doctorData.patientNotification(user).valueChanges().subscribe(item => {
       this.items = item
     });
+  });
   }
 
   logout() {

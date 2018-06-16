@@ -20,7 +20,7 @@ import { DoctorData } from '../providers/doctor-data';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
 import { DoctorHistoryPage } from '../pages/doctor/doctor-history/doctor-history';
-import { DoctorPatientHistoryPage } from '../pages/doctor/doctor-patienthistory/doctor-patienthistory';
+import { PatientHistoryPage } from '../pages/common/patienthistory/patienthistory';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -60,7 +60,7 @@ class CameraMock extends Camera {
     DoctorInitialData,
     PatientInitialData,
     DoctorHistoryPage,
-    DoctorPatientHistoryPage
+    PatientHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -85,7 +85,7 @@ class CameraMock extends Camera {
     DoctorInitialData,
     PatientInitialData,
     DoctorHistoryPage,
-    DoctorPatientHistoryPage
+    PatientHistoryPage
   ],
   providers: [
     StatusBar,

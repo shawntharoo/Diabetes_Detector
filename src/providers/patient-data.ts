@@ -6,14 +6,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class PatientData {
-  user : any;
+  user: any;
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
       this.user = user;
     });
   }
 
-  loadAllDoctors(){
+  loadAllDoctors() {
     return this.db.list<Item>('DoctorProfiles');
   }
 
@@ -27,14 +27,23 @@ export class PatientData {
     return email.replace(/\./g, ',');
   }
 
-  initialPatientData(firstname: String, lastname: String, doctor: String){
+  retransform(email) {
+    return email.replace(/\,/g, '.');
+  }
+
+  initialPatientData(firstname: String, lastname: String, doctor: String) {
     var emailt = this.transform(this.user.email);
     return this.db.list('UserProfiles').set(emailt, {
-       firstname: firstname,
-       lastname: lastname,
-       doctor: doctor,
-       status: 1
-     })
- }
+      firstname: firstname,
+      lastname: lastname,
+      doctor: doctor,
+      status: 1
+    })
+  }
+
+
+  patientHistory(patinetEmail) {
+    return this.db.list('PatientReports/'+ patinetEmail);
+  }
 
 }
