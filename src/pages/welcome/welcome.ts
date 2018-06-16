@@ -16,11 +16,11 @@ export class WelcomePage {
   }
 
   doctor_login(){
-    this.navCtrl.push(DoctorLoginPage, {}, {animate: false});
+    this.navCtrl.push(DoctorLoginPage, {}, {animate: true});
   }
 
   patient_login(){
-    this.navCtrl.push(PatientLoginPage, {}, {animate: false});
+    this.navCtrl.push(PatientLoginPage, {}, {animate: true});
     }
   
 

@@ -14,6 +14,7 @@ import { DoctorSignup } from '../pages/doctor/doctor-signup/doctor-signup';
 import { DoctorInitialData } from '../pages/doctor/doctor-initialData/doctor-initialData';
 import { PatientInitialData } from '../pages/patient/patient-initialData/patient-initialData';
 import { PatientSignup } from '../pages/patient/patient-signup/patient-signup';
+import { PatientPaymentPage } from '../pages/patient/patient-payment/patient-payment';
 import { AuthData } from '../providers/auth-data';
 import { PatientData } from '../providers/patient-data';
 import { DoctorData } from '../providers/doctor-data';
@@ -57,6 +58,7 @@ class CameraMock extends Camera {
     PatientSignup,
     PatientTabsPage,
     PatientHomePage,
+    PatientPaymentPage,
     DoctorInitialData,
     PatientInitialData,
     DoctorHistoryPage,
@@ -82,6 +84,7 @@ class CameraMock extends Camera {
     PatientSignup,
     PatientTabsPage,
     PatientHomePage,
+    PatientPaymentPage,
     DoctorInitialData,
     PatientInitialData,
     DoctorHistoryPage,

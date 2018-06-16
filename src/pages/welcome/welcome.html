@@ -1,32 +1,38 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Welcome</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding id="welcome">
-    <img src="assets/imgs/welcome.png" class="logo"/>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <h1>Welcome to Your App</h1>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+<ion-content class="vertical-center">
   
-    <ion-grid >
-      <ion-row>
+    <ion-grid>
+      <ion-row justify-content-center>
         <ion-col center text-center>
-          <button ion-button full color="success" round (click)="doctor_login()">I am a doctor</button>
+          <div class="logo">
+            <img src="../../assets/imgs/favorite-heart-button.png">
+          </div>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row justify-content-center>
         <ion-col center text-center>
-          <button ion-button full color="lightText" round (click)="patient_login()">I am a patient</button>
+          <h1>DiaBeats</h1>
         </ion-col>
       </ion-row>
+      <ion-row justify-content-center margin-bottom>
+        <ion-col center text-center>
+          <span class="tagline">Healing begins here.</span>
+        </ion-col>
+      </ion-row>
+      
+          <ion-row align-items-center margin-top>
+              <ion-col center text-center>
+                <button ion-button color="loginButtons" round (click)="doctor_login()" class="login--button">Sign in as a
+                  <span>&nbsp;Doctor</span>
+                </button>
+              </ion-col>
+            </ion-row>
+            <ion-row align-items-center>
+              <ion-col center text-center>
+                <button ion-button color="loginButtons" round (click)="patient_login()" class="login--button">Sign in as a
+                  <span>&nbsp;Patient</span>
+                </button>
+              </ion-col>
+            </ion-row>      
     </ion-grid>
-  </ion-content>
+
+</ion-content>

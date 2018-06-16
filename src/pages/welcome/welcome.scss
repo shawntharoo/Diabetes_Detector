@@ -1,15 +1,37 @@
 page-welcome {
-    #welcome{
-        h1{
-            font-size: 25px;
-            margin-top:50px;
-            text-align: center
+    // .vertical-center {
+    //     display: flex !important;
+    //     align-content: center !important;
+    //     align-items: center !important;
+    // }
+    ion-content {
+        .logo {
+            img {
+                width: 140px;
+            }
         }
-        .marginTop{
-            margin-top:150px;
+        .tagline {
+            font-size: 1.7rem;
+            font-weight: 300;
         }
-        .logo{
-            height: 40%;
+        .login--button {
+            width: 75%;
+            border-radius: 6px;
+            border: 1px solid #fff;
+            color: #fff;
+            
+            span {
+                font-weight: 300 !important;
+                span{
+                    font-weight:700 !important;
+                }
+            }
         }
+        ion-grid {
+            height: 100%;
+            justify-content: center;
+        }
+        color: #fff !important;
+        background-color: #DB2F23 !important;
     }
 }

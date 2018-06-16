@@ -1,47 +1,69 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
 <ion-content id="login">
 
-  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
-    <div class="row responsive-md">
-      <div class="col col-50 col-offset-25">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col center text-center>
+        <div class="logo">
+          <img src="../../assets/imgs/favorite-heart-button.png">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col center text-center>
+        <h1>DiaBeats</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center margin-bottom>
+      <ion-col center text-center>
+        <span class="tagline">Healing begins here.</span>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input #email item-content formControlName="email" type="email" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
+            <ion-label stacked *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty" color="secondary">Please enter a valid email</ion-label>
 
-        <ion-item>
-          <ion-label stacked>Email</ion-label>
-          <ion-input #email formControlName="email" type="email" placeholder="Your email address" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
-        </ion-item>
-        <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
-          <p>Please enter a valid email.</p>
-        </ion-item>
-
-        <ion-item>
-          <ion-label stacked>Password</ion-label>
-          <ion-input #password formControlName="password" type="password" placeholder="Your password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
-        </ion-item>
-        <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
-          <p>Your password needs more than 6 characters.</p>
-        </ion-item>
-
-        <button ion-button block type="submit">
-          Login
-        </button>
-        <button ion-button block clear (click)="goToSignup()">
-          Create a new account
-        </button>
-        <button ion-button block clear (click)="goToResetPassword()">
-          I forgot my password
-        </button>
-
-      </div>
-    </div>
-
-  </form>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label stacked>Password</ion-label>
+            <ion-label stacked *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty" color="secondary">
+              Your password needs more than 6 characters
+            </ion-label>
+            <ion-input #password formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <button ion-button block type="submit" outline color="secondary">
+                Login
+              </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <button ion-button block clear (click)="goToSignup()" color="secondary">
+                Create a new account
+              </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <button ion-button block clear (click)="goToResetPassword()" color="secondary">
+                I forgot my password
+              </button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+  
 
 
 
