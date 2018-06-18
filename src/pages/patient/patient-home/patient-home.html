@@ -1,12 +1,21 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-buttons end hideWhen="android">
+        <button ion-button icon-only>
+            <ion-icon name="create"></ion-icon>
+    
+        </button>
+      </ion-buttons>
   </ion-navbar>
+ 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <div class="top--container">
+  </div>
   {{visionres}}
-    <ion-card *ngFor="let item of items | async">
+    <!-- <ion-card *ngFor="let item of items | async">
         <img [src]="'data:image/png;base64,' + item.imageData"/>
         <ion-card-content>
           <ion-list no-lines>
@@ -14,9 +23,9 @@
             <ion-item *ngFor="let label of item.results[0].labelAnnotations">{{label.description}}</ion-item>
           </ion-list>
         </ion-card-content>
-      </ion-card>
+      </ion-card> -->
       <ion-fab bottom right>
-        <button ion-fab (click)="takePhoto()">
+        <button ion-fab (click)="takePhoto()" hideWhen="ios">
           <ion-icon name="camera"></ion-icon>
         </button>
       </ion-fab>

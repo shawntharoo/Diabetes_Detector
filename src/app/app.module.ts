@@ -66,7 +66,15 @@ class CameraMock extends Camera {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,
+      {
+        tabsPlacement: 'top',
+        platforms:{
+          ios:{
+            tabsPlacement:'bottom'
+          }
+        }
+      }),
     AngularFireModule.initializeApp(firebaseConfig.fire),
     HttpModule
   ],
