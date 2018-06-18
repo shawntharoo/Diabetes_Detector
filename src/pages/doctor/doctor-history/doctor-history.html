@@ -6,11 +6,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <h2>All the Patients</h2>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{ item.firstname }} {{item.lastname}}
-    </button>  
-  </ion-list>
+  <ion-card *ngFor="let item of items"> 
+    <ion-item>
+      <h2>{{ item.firstname }} {{item.lastname}} <span style="color:red; float:right"><ion-note>Age : 31</ion-note></span></h2>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small (click)="itemSelected(item)">
+          <ion-icon name="filing"></ion-icon>
+          <div>View History</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          November 5, 1955
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  
 </ion-content>
