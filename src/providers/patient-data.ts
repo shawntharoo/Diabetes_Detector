@@ -44,7 +44,7 @@ export class PatientData {
 
 
   patientHistory(patinetEmail) {
-    return this.db.list('PatientReports/'+ patinetEmail);
+    return this.db.list('PatientReports/'+ patinetEmail + '/report1');
   }
 
 }
