@@ -33,6 +33,14 @@
       <p>Enter the lastname</p>
     </ion-item>
 
+    <ion-item>
+      <ion-label stacked>Age</ion-label>
+      <ion-input #age formControlName="age" type="text" placeholder="Your age" [class.invalid]="!InitialDataForm.controls.age.valid && InitialDataForm.controls.age.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!InitialDataForm.controls.age.valid  && InitialDataForm.controls.age.dirty">
+      <p>Enter the age</p>
+    </ion-item>
 
     <ion-item>
       <ion-label>Doctor</ion-label>

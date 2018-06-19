@@ -36,6 +36,7 @@ export class PatientInitialData {
         this.InitialDataForm = formBuilder.group({
             firstname: ['', Validators.compose([Validators.required])],
             lastname: ['', Validators.compose([Validators.required])],
+            age: ['', Validators.compose([Validators.required])],
             doctor: ['', Validators.compose([Validators.required])],
         })
     }
@@ -50,7 +51,7 @@ export class PatientInitialData {
         if (!this.InitialDataForm.valid) {
             console.log(this.InitialDataForm.value);
         } else {
-            this.patientData.initialPatientData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor)
+            this.patientData.initialPatientData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor, this.InitialDataForm.value.age)
                 .then(() => {
                     this.loading.dismiss().then(() => {
                         this.nav.setRoot(PatientPaymentPage);

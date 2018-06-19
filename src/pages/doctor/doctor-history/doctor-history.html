@@ -10,7 +10,7 @@
   <h2>All the Patients</h2>
   <ion-card *ngFor="let item of items"> 
     <ion-item>
-      <h2>{{ item.firstname }} {{item.lastname}} <span style="color:red; float:right"><ion-note>Age : 31</ion-note></span></h2>
+      <h2>{{ item.firstname }} {{item.lastname}} <span style="color:red; float:right; ; font-size:12px">Age : {{item.age}}</span></h2>
     </ion-item>
     <ion-row>
       <ion-col>
@@ -18,11 +18,6 @@
           <ion-icon name="filing"></ion-icon>
           <div>View History</div>
         </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          November 5, 1955
-        </ion-note>
       </ion-col>
     </ion-row>
   </ion-card>
