@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>All the Reports</h2>
+  <h2 *ngIf="patientDate">History of {{patientDate.firstname}} {{patientDate.lastname}}</h2>
 
   <ion-card>
     <ion-card-header>

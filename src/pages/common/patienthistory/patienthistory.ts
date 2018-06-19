@@ -20,9 +20,11 @@ SeCrlineChart: any;
 fbsCount : any = [];
 ppbsCount: any = [];
 chartLabels : any = [];
+patientDate: any;
 
   constructor(public navCtrl: NavController, private navParams: NavParams, private patientDta: PatientData) {
-    let patient = navParams.get('patient');
+    this.patientDate = navParams.get('patient');
+    let patient = this.patientDate;
     this.patientDta.patientHistory(patient.key).valueChanges().subscribe(history => {
       for(var i=0; i<history.length; i++){
         this.fbsCount.push();
