@@ -42,9 +42,16 @@ export class PatientData {
     })
   }
 
-
-  patientHistory(patinetEmail) {
+  patientHBA1CReport(patinetEmail) {
     return this.db.list('PatientReports/'+ patinetEmail + '/report1');
+  }
+
+  patientFBSReport(patinetEmail) {
+    return this.db.list('PatientReports/'+ patinetEmail + '/report2');
+  }
+
+  patientSeCrReport(patinetEmail) {
+    return this.db.list('PatientReports/'+ patinetEmail + '/report3');
   }
 
 }
