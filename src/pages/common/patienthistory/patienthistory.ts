@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { PatientData } from '../../../providers/patient-data';
 import { Chart } from 'chart.js';
+import { PatientDetailHistoryPage } from '../patientDetailHistory/patient-detailHistory';
 
 @Component({
   selector: 'page-patienthistory',
@@ -19,7 +20,7 @@ export class PatientHistoryPage {
   //HBA1C Report variables
   hba1cCount: any = [];
   HBA1CchartLabels: any = [];
-  HBA1Chistory : any;
+  HBA1Chistory: any;
 
   //FBS Report variables
   fbsCount: any = [];
@@ -28,8 +29,8 @@ export class PatientHistoryPage {
   FBShistory: any;
 
   //Serum Creatine Report variables
-  serCreCount : any = [];
-  seruricAcidCount : any = [];
+  serCreCount: any = [];
+  seruricAcidCount: any = [];
   SerCreatineChartVariables: any = [];
   SerCreatineHistory: any;
 
@@ -37,7 +38,7 @@ export class PatientHistoryPage {
 
   firstReport: any = {};
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, private patientDta: PatientData) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, private patientDta: PatientData, public modalCtrl: ModalController) {
 
   }
 
@@ -225,6 +226,11 @@ export class PatientHistoryPage {
 
     })
 
+  }
+
+  openHistoryModal(type) {
+    let modal = this.modalCtrl.create(PatientDetailHistoryPage, { });
+    modal.present();
   }
 
 }
