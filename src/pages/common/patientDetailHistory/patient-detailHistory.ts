@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-patientDetailHistory',
@@ -7,8 +7,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PatientDetailHistoryPage {
   patient: any;
-  constructor(public navCtrl: NavController, public params: NavParams) {
-    this.patient = params.get('patient');
+  type: any;
+  constructor(public navCtrl: NavController, public params: NavParams, public viewCtrl: ViewController) {
+    this.patient = params.get('history');
+    this.type = params.get('type');
   }
 
 }

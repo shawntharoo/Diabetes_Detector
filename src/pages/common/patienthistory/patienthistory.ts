@@ -229,7 +229,15 @@ export class PatientHistoryPage {
   }
 
   openHistoryModal(type) {
-    let modal = this.modalCtrl.create(PatientDetailHistoryPage, { });
+    var historydata = [];
+    if(type == 'FBS'){
+      historydata = this.FBShistory;
+    }else if(type == 'Serum'){
+      historydata = this.SerCreatineHistory;
+    }else if(type == 'HB1AC'){
+      historydata = this.HBA1Chistory;
+    }
+    let modal = this.modalCtrl.create(PatientDetailHistoryPage, { history : historydata, type: type });
     modal.present();
   }
 
