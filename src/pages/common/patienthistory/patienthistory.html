@@ -98,9 +98,43 @@
     </div>
   </ion-list>
 
-  <ion-list>
-    <button ion-item *ngFor="let hstry of history" (click)="itemSelected(item)">
-      {{ hstry }}
-    </button>
-  </ion-list>
+  <ion-card>
+    <ion-card-content>
+      FBS History Reports
+    </ion-card-content>
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-end clear small>
+            <div>More ..</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      Serum Creatine History Reports
+    </ion-card-content>
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-end clear small>
+            <div>More ..</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      HBA1C History Reports
+    </ion-card-content>
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-end clear small>
+            <div>More ..</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+
 </ion-content>
