@@ -36,18 +36,71 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      Header
-    </ion-card-header>
-    <ion-card-content>
-      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-    </ion-card-content>
-  </ion-card>
+
+  <ion-list>
+    <ion-item-divider *ngFor="let f of firstReport.FBS">
+      FBS Report
+      <p item-end>{{f.date}}</p>
+    </ion-item-divider>
+    <div *ngFor="let f of firstReport.FBS">
+      <ion-item>
+        <ion-label>
+          FBS Count
+        </ion-label>
+        <div item-content>
+          {{f.fbs}}
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          PPBS Count
+        </ion-label>
+        <div item-content>
+          {{f.ppbs}}
+        </div>
+      </ion-item>
+    </div>
+    <ion-item-divider *ngFor="let sc of firstReport.SerCreatine">
+      Serum Creatine Report
+      <p item-end>{{sc.date}}</p>
+    </ion-item-divider>
+    <div *ngFor="let sc of firstReport.SerCreatine">
+      <ion-item>
+        <ion-label>
+          Serum Creatine Count
+        </ion-label>
+        <div item-content>
+          {{sc.serCret}}
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Serum Uric Acid Count
+        </ion-label>
+        <div item-content>
+          {{sc.serUricAcid}}
+        </div>
+      </ion-item>
+    </div>
+    <ion-item-divider *ngFor="let h of firstReport.HBA1C">
+      HBA1C Report
+      <p item-end>{{h.date}}</p>
+    </ion-item-divider>
+    <div *ngFor="let h of firstReport.HBA1C">
+      <ion-item>
+        <ion-label>
+          HBA1C Count
+        </ion-label>
+        <div item-content>
+          {{h.hb1ac}}
+        </div>
+      </ion-item>
+    </div>
+  </ion-list>
 
   <ion-list>
     <button ion-item *ngFor="let hstry of history" (click)="itemSelected(item)">
       {{ hstry }}
-    </button>  
+    </button>
   </ion-list>
 </ion-content>

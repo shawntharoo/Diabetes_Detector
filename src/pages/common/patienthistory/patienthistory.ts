@@ -38,7 +38,12 @@ export class PatientHistoryPage {
   firstReport: any = {};
 
   constructor(public navCtrl: NavController, private navParams: NavParams, private patientDta: PatientData) {
-    this.patientData = navParams.get('patient');
+
+  }
+
+  ionViewDidLoad() {
+
+    this.patientData = this.navParams.get('patient');
     let patient = this.patientData;
 
 
@@ -52,6 +57,38 @@ export class PatientHistoryPage {
         this.firstReport.HBA1C = this.HBA1Chistory.slice(0, 1);
         this.HBA1Chistory.splice(0, 1);
       }
+
+      this.HBA1ClineChart = new Chart(this.HBA1ClineCanvas.nativeElement, {
+        type: 'line',
+        data: {
+          labels: this.HBA1CchartLabels,
+          datasets: [
+            {
+              label: "My First dataset",
+              fill: false,
+              lineTension: 0.1,
+              backgroundColor: "rgba(75,192,192,0.4)",
+              borderColor: "rgba(75,192,192,1)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(75,192,192,1)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(75,192,192,1)",
+              pointHoverBorderColor: "rgba(220,220,220,1)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.hba1cCount,
+              spanGaps: false,
+            }
+          ]
+        }
+      });
+
     })
 
     this.patientDta.patientFBSReport(patient.key).valueChanges().subscribe(FBShistory => {
@@ -65,6 +102,60 @@ export class PatientHistoryPage {
         this.firstReport.FBS = this.FBShistory.slice(0, 1);
         this.FBShistory.splice(0, 1);
       }
+
+      this.FBSlineChart = new Chart(this.FBSlineCanvas.nativeElement, {
+        type: 'line',
+        data: {
+          labels: this.FBSchartLabels,
+          datasets: [
+            {
+              label: "My First dataset",
+              fill: false,
+              lineTension: 0.1,
+              backgroundColor: "rgba(255,0,0,0.6)",
+              borderColor: "rgba(255,0,0,1)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(255,0,0,1)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(255,0,0,1)",
+              pointHoverBorderColor: "rgba(255,0,0,1)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.fbsCount,
+              spanGaps: false,
+            },
+            {
+              label: "My First dataset",
+              fill: false,
+              lineTension: 0.1,
+              backgroundColor: "rgba(0,0,255,0.5)",
+              borderColor: "rgba(0,0,255,0.9)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(0,0,255,0.9)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(0,0,255,0.9)",
+              pointHoverBorderColor: "rgba(0,0,255,0.9)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.ppbsCount,
+              spanGaps: false,
+            }
+          ]
+        }
+      });
+
     })
 
     this.patientDta.patientSeCrReport(patient.key).valueChanges().subscribe(SerCreatineHistory => {
@@ -78,147 +169,61 @@ export class PatientHistoryPage {
         this.firstReport.SerCreatine = this.SerCreatineHistory.slice(0, 1);
         this.SerCreatineHistory.splice(0, 1);
       }
+
+      this.SeCrlineChart = new Chart(this.SeCrlineCanvas.nativeElement, {
+        type: 'line',
+        data: {
+          labels: this.SerCreatineChartVariables,
+          datasets: [
+            {
+              label: "My First dataset",
+              fill: false,
+              lineTension: 0.1,
+              backgroundColor: "rgba(128,0,0,0.6)",
+              borderColor: "rgba(125,100,100,20)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(125,100,100,20)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(125,100,100,20)",
+              pointHoverBorderColor: "rgba(220,220,220,1)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.serCreCount,
+              spanGaps: false,
+            },
+            {
+              label: "My First dataset",
+              fill: false,
+              lineTension: 0.1,
+              backgroundColor: "rgba(0,255,0,0.5)",
+              borderColor: "rgba(0,255,0,0.9)",
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: "rgba(0,255,0,0.9)",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: "rgba(0,255,0,0.9)",
+              pointHoverBorderColor: "rgba(0,255,0,0.9)",
+              pointHoverBorderWidth: 2,
+              pointRadius: 1,
+              pointHitRadius: 10,
+              data: this.seruricAcidCount,
+              spanGaps: false,
+            }
+          ]
+        }
+      });
+
     })
-
-  }
-
-  ionViewDidLoad() {
-    this.FBSlineChart = new Chart(this.FBSlineCanvas.nativeElement, {
-      type: 'line',
-      data: {
-        labels: this.FBSchartLabels,
-        datasets: [
-          {
-            label: "My First dataset",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(255,0,0,0.6)",
-            borderColor: "rgba(255,0,0,1)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(255,0,0,1)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(255,0,0,1)",
-            pointHoverBorderColor: "rgba(255,0,0,1)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: this.fbsCount,
-            spanGaps: false,
-          },
-          {
-            label: "My First dataset",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(0,0,255,0.5)",
-            borderColor: "rgba(0,0,255,0.9)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(0,0,255,0.9)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(0,0,255,0.9)",
-            pointHoverBorderColor: "rgba(0,0,255,0.9)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: this.ppbsCount,
-            spanGaps: false,
-          }
-        ]
-      }
-    });
-
-    this.HBA1ClineChart = new Chart(this.HBA1ClineCanvas.nativeElement, {
-      type: 'line',
-      data: {
-        labels: this.HBA1CchartLabels,
-        datasets: [
-          {
-            label: "My First dataset",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: this.hba1cCount,
-            spanGaps: false,
-          }
-        ]
-      }
-    });
-
-    this.SeCrlineChart = new Chart(this.SeCrlineCanvas.nativeElement, {
-      type: 'line',
-      data: {
-        labels: this.SerCreatineChartVariables,
-        datasets: [
-          {
-            label: "My First dataset",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(128,0,0,0.6)",
-            borderColor: "rgba(125,100,100,20)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(125,100,100,20)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(125,100,100,20)",
-            pointHoverBorderColor: "rgba(220,220,220,1)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: this.serCreCount,
-            spanGaps: false,
-          },
-          {
-            label: "My First dataset",
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: "rgba(0,255,0,0.5)",
-            borderColor: "rgba(0,255,0,0.9)",
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(0,255,0,0.9)",
-            pointBackgroundColor: "#fff",
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(0,255,0,0.9)",
-            pointHoverBorderColor: "rgba(0,255,0,0.9)",
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: this.seruricAcidCount,
-            spanGaps: false,
-          }
-        ]
-      }
-    });
 
   }
 
