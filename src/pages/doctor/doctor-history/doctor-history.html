@@ -1,16 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      History
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <h2>All the Patients</h2>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{ item.firstname }} {{item.lastname}}
-    </button>  
-  </ion-list>
+<ion-content padding>
+  <h2>Hstory Reports</h2>
+  <ion-card *ngFor="let item of items"> 
+    <ion-item>
+      <h2>{{ item.firstname }} {{item.lastname}} <span style="color:red; float:right; ; font-size:12px">Age : {{item.age}}</span></h2>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small (click)="itemSelected(item)">
+          <ion-icon name="filing"></ion-icon>
+          <div>View History</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  
 </ion-content>

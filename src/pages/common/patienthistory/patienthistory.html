@@ -7,29 +7,134 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>All the Reports</h2>
+  <h2 *ngIf="patientDate">History of {{patientDate.firstname}} {{patientDate.lastname}}</h2>
 
   <ion-card>
     <ion-card-header>
-      Line Chart
+      FBS Chart
     </ion-card-header>
     <ion-card-content>
-      <canvas #lineCanvas></canvas>
+      <canvas #FBSlineCanvas></canvas>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-header>
-      Header
+      HBA1C Chart
     </ion-card-header>
     <ion-card-content>
-      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+      <canvas #HBA1ClineCanvas></canvas>
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Serum Creatine Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #SeCrlineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
 
   <ion-list>
-    <button ion-item *ngFor="let hstry of history" (click)="itemSelected(item)">
-      {{ hstry }}
-    </button>  
+    <ion-item-divider *ngFor="let f of firstReport.FBS">
+      FBS Report
+      <p item-end>{{f.date}}</p>
+    </ion-item-divider>
+    <div *ngFor="let f of firstReport.FBS">
+      <ion-item>
+        <ion-label>
+          FBS Count
+        </ion-label>
+        <div item-content>
+          {{f.fbs}}
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          PPBS Count
+        </ion-label>
+        <div item-content>
+          {{f.ppbs}}
+        </div>
+      </ion-item>
+    </div>
+    <ion-item-divider *ngFor="let sc of firstReport.SerCreatine">
+      Serum Creatine Report
+      <p item-end>{{sc.date}}</p>
+    </ion-item-divider>
+    <div *ngFor="let sc of firstReport.SerCreatine">
+      <ion-item>
+        <ion-label>
+          Serum Creatine Count
+        </ion-label>
+        <div item-content>
+          {{sc.serCret}}
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Serum Uric Acid Count
+        </ion-label>
+        <div item-content>
+          {{sc.serUricAcid}}
+        </div>
+      </ion-item>
+    </div>
+    <ion-item-divider *ngFor="let h of firstReport.HBA1C">
+      HBA1C Report
+      <p item-end>{{h.date}}</p>
+    </ion-item-divider>
+    <div *ngFor="let h of firstReport.HBA1C">
+      <ion-item>
+        <ion-label>
+          HBA1C Count
+        </ion-label>
+        <div item-content>
+          {{h.hb1ac}}
+        </div>
+      </ion-item>
+    </div>
   </ion-list>
+
+  <ion-card>
+    <ion-card-content>
+      FBS History Reports
+    </ion-card-content>
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-end clear small (click)="openHistoryModal('FBS')">
+            <div>More ..</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      Serum Creatine History Reports
+    </ion-card-content>
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-end clear small (click)="openHistoryModal('Serum')">
+            <div>More ..</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      HBA1C History Reports
+    </ion-card-content>
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-end clear small (click)="openHistoryModal('HB1AC')">
+            <div>More ..</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+
 </ion-content>

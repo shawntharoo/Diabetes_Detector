@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Older Reports</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+<div  *ngFor="let f of patient">
+    <div *ngIf="type == 'FBS'">
+      <ion-item-divider color="devider">
+        FBS Report
+        <p item-end>{{f.date}}</p>
+      </ion-item-divider>
+        <ion-item>
+          <ion-label>
+            FBS Count
+          </ion-label>
+          <div item-content>
+            {{f.fbs}}
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            PPBS Count
+          </ion-label>
+          <div item-content>
+            {{f.ppbs}}
+          </div>
+        </ion-item>
+    </div>
+    </div>
+
+    <div *ngIf="type == 'Serum'">
+      <div  *ngFor="let sc of patient">
+      <ion-item-divider color="devider">
+        Serum Creatine Report
+        <p item-end>{{sc.date}}</p>
+      </ion-item-divider>
+        <ion-item>
+          <ion-label>
+            Serum Creatine Count
+          </ion-label>
+          <div item-content>
+            {{sc.serCret}}
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Serum Uric Acid Count
+          </ion-label>
+          <div item-content>
+            {{sc.serUricAcid}}
+          </div>
+        </ion-item>
+    </div>
+    </div>
+
+    <div *ngIf="type == 'HB1AC'">
+      <div *ngFor="let h of patient">
+      <ion-item-divider color="devider">
+        HBA1C Report
+        <p item-end>{{h.date}}</p>
+      </ion-item-divider>
+        <ion-item>
+          <ion-label>
+            HBA1C Count
+          </ion-label>
+          <div item-content>
+            {{h.hb1ac}}
+          </div>
+        </ion-item>
+    </div>
+    </div>
+
+  </ion-list>
+</ion-content>
