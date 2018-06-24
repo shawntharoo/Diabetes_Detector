@@ -21,7 +21,6 @@ export class PatientHomePage {
     private vision: GoogleCloudVisionServiceProvider, ) {
 
   }
-let
   takePhoto() {
     const options: CameraOptions = {
       quality: 100,
