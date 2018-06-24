@@ -8,6 +8,8 @@ import { Observable, base64 } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { GoogleCloudVisionServiceProvider } from '../../../providers/google-cloud-vision-service';
+import { PatientData } from '../../../providers/patient-data';
+import { AngularFireAuth } from 'angularfire2/auth';
 @Component({
   selector: 'page-patienthome',
   templateUrl: 'patient-home.html'
@@ -18,7 +20,7 @@ export class PatientHomePage {
   base64Image:any;
   showCard:boolean = false;
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData, public doctorData: DoctorData, public modalCtrl: ModalController, private camera: Camera,
-    private vision: GoogleCloudVisionServiceProvider, ) {
+    private vision: GoogleCloudVisionServiceProvider, public patientData: PatientData, public afAuth: AngularFireAuth ) {
 
   }
   takePhoto() {
@@ -33,8 +35,11 @@ export class PatientHomePage {
     this.camera.getPicture(options).then((imageData) => {
       this.vision.getLabels(imageData).subscribe((result) => {
         this.base64Image = 'data:image/jpeg;base64,' + imageData;
-        this.visionres = result.json().responses[0].textAnnotations[0].description
-        this.showCard = true;
+        this.visionres = result.json().responses[0].textAnnotations[0].description;
+        this.afAuth.authState.subscribe(user => {
+          this.patientData.patientOCRFullReportFBS(this.visionres, user.email)
+          this.showCard = true;
+        })
       }, err => {
         console.log(err);
       });
