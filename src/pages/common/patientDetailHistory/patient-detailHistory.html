@@ -11,8 +11,8 @@
 
 <ion-content>
   <ion-list>
-<div  *ngFor="let f of patient">
-    <div *ngIf="type == 'FBS'">
+<div *ngIf="type == 'FBS'">
+    <div  *ngFor="let f of patient" >
       <ion-item-divider color="devider">
         FBS Report
         <p item-end>{{f.date}}</p>
