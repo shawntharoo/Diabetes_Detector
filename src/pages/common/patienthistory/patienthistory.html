@@ -29,7 +29,7 @@
 
   <ion-card>
     <ion-card-header>
-      Serum Creatine Chart
+      Serum Creatinine Chart
     </ion-card-header>
     <ion-card-content>
       <canvas #SeCrlineCanvas></canvas>
@@ -61,13 +61,13 @@
       </ion-item>
     </div>
     <ion-item-divider *ngFor="let sc of firstReport.SerCreatine">
-      Serum Creatine Report
+      Serum Creatinine Report
       <p item-end>{{sc.date}}</p>
     </ion-item-divider>
     <div *ngFor="let sc of firstReport.SerCreatine">
       <ion-item>
         <ion-label>
-          Serum Creatine Count
+          Serum Creatinine Count
         </ion-label>
         <div item-content>
           {{sc.serCret}}
@@ -113,7 +113,7 @@
 
   <ion-card>
     <ion-card-content>
-      Serum Creatine History Reports
+      Serum Creatinine History Reports
     </ion-card-content>
     <ion-row>
         <ion-col>
