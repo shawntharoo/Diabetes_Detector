@@ -246,7 +246,7 @@ export class PatientHistoryPage {
             labels: this.HBA1CchartLabels,
             datasets: [
               {
-                label: "My First dataset",
+                label: "HBA1C",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(75,192,192,0.4)",
@@ -291,7 +291,7 @@ export class PatientHistoryPage {
             labels: this.FBSchartLabels,
             datasets: [
               {
-                label: "My First dataset",
+                label: "FBS",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(255,0,0,0.6)",
@@ -313,7 +313,7 @@ export class PatientHistoryPage {
                 spanGaps: false,
               },
               {
-                label: "My First dataset",
+                label: "PPBS",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(0,0,255,0.5)",
@@ -358,7 +358,7 @@ export class PatientHistoryPage {
             labels: this.SerCreatineChartVariables,
             datasets: [
               {
-                label: "My First dataset",
+                label: "Serum Creatinine",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(128,0,0,0.6)",
@@ -380,7 +380,7 @@ export class PatientHistoryPage {
                 spanGaps: false,
               },
               {
-                label: "My First dataset",
+                label: "Serum Uric Acid",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(0,255,0,0.5)",
