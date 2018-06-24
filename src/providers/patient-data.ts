@@ -56,12 +56,12 @@ export class PatientData {
 
   patientOCRFullReportFBS(reportData, user){;
     var patientEmail = this.transform(user)
-    this.db.list('PatientReports/'+ patientEmail + '/report2').push({
+    this.db.list('PatientReports/'+ patientEmail + '/report3').push({
       date: "25/06/2018",
-      fbs: 120,
-      ogit: 0,
-      ppbs: 125,
-      rbs: 0,
+      blurea: 24.5,
+      serAnalyze: 85,
+      serCret: 0.85,
+      serUricAcid: 4.5,
       fullReport : reportData
     })
   }
