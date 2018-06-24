@@ -14,7 +14,13 @@
 <ion-content>
   <div class="top--container">
   </div>
-  {{visionres}}
+  <ion-card *ngIf="showCard">
+    <img [src]="base64Image"/>
+    <ion-card-content>
+      {{visionres}}
+    </ion-card-content>
+  </ion-card>
+  
     <!-- <ion-card *ngFor="let item of items | async">
         <img [src]="'data:image/png;base64,' + item.imageData"/>
         <ion-card-content>

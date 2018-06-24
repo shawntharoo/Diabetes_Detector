@@ -13,6 +13,7 @@ export class PatientPaymentPage {
     }
 
     loadHomePage(){
+        this.nav.push(PatientTabsPage);
         this.nav.setRoot(PatientTabsPage);
     }
 }
