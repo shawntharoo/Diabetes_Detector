@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end hideWhen="android">
+        <button ion-button icon-only (click)="editProfile()">
+            <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+ 
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="patient">
+    <ion-card-header>
+      Basic information
+    </ion-card-header>
+
+    <ion-item>
+      <ion-icon name="checkmark-circle" item-start large></ion-icon>
+      <h2>First Name</h2>
+      <p>{{patient.firstname}}</p>
+    </ion-item>
+  
+    <ion-item>
+      <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+      <h2>Last Name</h2>
+      <p>{{patient.lastname}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+      <h2>Last Name</h2>
+      <p>{{patient.age}}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+      <h2>Assigned Doctor</h2>
+      <p>{{patient.doctor}}</p>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Payment information
+    </ion-card-header>
+
+    <ion-item>
+      <ion-icon name="ios-cash" item-start large></ion-icon>
+      <h2>Card Number</h2>
+      <p>12345678890</p>
+    </ion-item>
+  
+    <ion-item>
+      <ion-icon name="ios-cash" item-start large ></ion-icon>
+      <h2>Name on the card</h2>
+      <p>saman perera</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-cash" item-start large ></ion-icon>
+      <h2>Expiry Date</h2>
+      <p>07/2020</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="ios-cash" item-start large ></ion-icon>
+      <h2>Bank Name</h2>
+      <p>Sampath Bank</p>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

@@ -36,6 +36,8 @@ import { Camera } from '@ionic-native/camera';
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service';
 import { HttpModule } from '@angular/http';
 import { PatientDetailHistoryPage } from '../pages/common/patientDetailHistory/patient-detailHistory';
+import { PatientProfilePage } from '../pages/patient/patient-profile/patient-profile';
+import { DoctorProfilePage } from '../pages/doctor/doctor-profile/doctor-profile';
 
 class CameraMock extends Camera {
   getPicture(options) {
@@ -64,7 +66,9 @@ class CameraMock extends Camera {
     PatientInitialData,
     DoctorHistoryPage,
     PatientHistoryPage,
-    PatientDetailHistoryPage
+    PatientDetailHistoryPage,
+    PatientProfilePage,
+    DoctorProfilePage
   ],
   imports: [
     BrowserModule,
@@ -99,7 +103,9 @@ class CameraMock extends Camera {
     PatientInitialData,
     DoctorHistoryPage,
     PatientHistoryPage,
-    PatientDetailHistoryPage
+    PatientDetailHistoryPage,
+    PatientProfilePage,
+    DoctorProfilePage
   ],
   providers: [
     StatusBar,
