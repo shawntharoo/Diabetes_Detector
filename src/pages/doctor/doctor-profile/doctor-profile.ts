@@ -7,15 +7,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'doctor-profile.html'
 })
 export class DoctorProfilePage {
-patient : any;
+doctor : any;
   constructor(public modalCtrl: ModalController, public doctorData: DoctorData, public afAuth: AngularFireAuth ) {
     afAuth.authState.subscribe(user => {
       if (!user) {
 
       } else {
-        // this.patientData.logginPatient(user.email).valueChanges().subscribe((patient) => {
-        //   this.patient = patient;
-        // })
+        this.doctorData.logginDoctor(user.email).valueChanges().subscribe((doctor) => {
+          this.doctor = doctor;
+        })
       }
     });
   }
