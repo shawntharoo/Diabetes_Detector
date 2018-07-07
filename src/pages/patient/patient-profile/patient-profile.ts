@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 import { PatientData } from '../../../providers/patient-data';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { EditPatientProfilePage } from './edit-patient-profile/edit-patient-profile';
 @Component({
   selector: 'page-patientprofile',
   templateUrl: 'patient-profile.html'
@@ -18,6 +19,11 @@ patient : any;
         })
       }
     });
+  }
+
+  editProfile(){
+    let modal = this.modalCtrl.create(EditPatientProfilePage, { patientData : this.patient });
+    modal.present();
   }
 
 }

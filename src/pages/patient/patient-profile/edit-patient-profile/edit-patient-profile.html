@@ -1,0 +1,97 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Edit Profile</ion-title>
+      <ion-buttons left>
+            <button ion-button icon-only (click)="viewCtrl.dismiss()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+          </ion-buttons>
+    </ion-navbar>
+   
+  </ion-header>
+  
+  <ion-content>
+        <form [formGroup]="InitialDataForm" (submit)="editProfile()" novalidate>
+    <ion-card *ngIf="patient">
+        <img src="assets/imgs/user.png"/>
+      <ion-card-header>
+        Basic information
+      </ion-card-header>
+  
+      <ion-item>
+        <ion-icon name="checkmark-circle" item-start large></ion-icon>
+        <ion-label stacked>First Name</ion-label>
+      <ion-input #firstname formControlName="firstname" type="text" placeholder="Your firstname" [class.invalid]="!InitialDataForm.controls.firstname.valid && InitialDataForm.controls.firstname.dirty">
+      </ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!InitialDataForm.controls.firstname.valid  && InitialDataForm.controls.firstname.dirty">
+            <p>Enter the firstname</p>
+          </ion-item>
+    
+      <ion-item>
+        <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+        <ion-label stacked>Last Name</ion-label>
+        <ion-input #lastname formControlName="lastname" type="text" placeholder="Your lastname" [class.invalid]="!InitialDataForm.controls.lastname.valid && InitialDataForm.controls.lastname.dirty">
+        </ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!InitialDataForm.controls.lastname.valid  && InitialDataForm.controls.lastname.dirty">
+        <p>Enter the lastname</p>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+        <ion-label stacked>Age</ion-label>
+        <ion-input #age formControlName="age" type="text" placeholder="Your age" [class.invalid]="!InitialDataForm.controls.age.valid && InitialDataForm.controls.age.dirty">
+        </ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!InitialDataForm.controls.age.valid  && InitialDataForm.controls.age.dirty">
+        <p>Enter the age</p>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+        <ion-label>Doctor</ion-label>
+        <ion-select formControlName="doctor" #doctor [class.invalid]="!InitialDataForm.controls.doctor.valid && InitialDataForm.controls.doctor.dirty">
+          <ion-option *ngFor="let doc of doctors" value="{{doc.email}}">{{doc.firstname}} {{doc.lastname}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!InitialDataForm.controls.doctor.valid && InitialDataForm.controls.doctor.dirty">
+        <p>Select a doctor.</p>
+      </ion-item>
+    </ion-card>
+  
+    <ion-card>
+      <ion-card-header>
+        Payment information
+      </ion-card-header>
+  
+      <ion-item>
+        <ion-icon name="ios-cash" item-start large></ion-icon>
+        <h2>Card Number</h2>
+        <p>12345678890</p>
+      </ion-item>
+    
+      <ion-item>
+        <ion-icon name="ios-cash" item-start large ></ion-icon>
+        <h2>Name on the card</h2>
+        <p>saman perera</p>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="ios-cash" item-start large ></ion-icon>
+        <h2>Expiry Date</h2>
+        <p>07/2020</p>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="ios-cash" item-start large ></ion-icon>
+        <h2>Bank Name</h2>
+        <p>Sampath Bank</p>
+      </ion-item>
+    </ion-card>
+    <button ion-button full type="submit">
+            Edit profile
+          </button>
+  </form>
+  </ion-content>
+  

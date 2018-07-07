@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Edit Profile</ion-title>
+      <ion-buttons left>
+            <button ion-button icon-only (click)="viewCtrl.dismiss()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+          </ion-buttons>
+    </ion-navbar>
+   
+  </ion-header>
+  
+  <ion-content>
+      <form [formGroup]="InitialDataForm" (submit)="editProfile()" novalidate>
+      <ion-card *ngIf="doctor">
+          <img src="assets/imgs/user.png"/>
+        <ion-card-header>
+          Basic information
+        </ion-card-header>
+    
+        <ion-item>
+          <ion-icon name="checkmark-circle" item-start large></ion-icon>
+          <ion-label stacked>First Name</ion-label>
+      <ion-input #firstname formControlName="firstname" type="text" placeholder="Your firstname" [class.invalid]="!InitialDataForm.controls.firstname.valid && InitialDataForm.controls.firstname.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!InitialDataForm.controls.firstname.valid  && InitialDataForm.controls.firstname.dirty">
+      <p>Enter the firstname</p>
+    </ion-item>
+      
+        <ion-item>
+          <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+          <ion-label stacked>Last Name</ion-label>
+          <ion-input #lastname formControlName="lastname" type="text" placeholder="Your lastname" [class.invalid]="!InitialDataForm.controls.lastname.valid && InitialDataForm.controls.lastname.dirty">
+          </ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!InitialDataForm.controls.lastname.valid  && InitialDataForm.controls.lastname.dirty">
+          <p>Enter the lastname</p>
+        </ion-item>
+    
+        <ion-item>
+          <ion-icon name="checkmark-circle" item-start large ></ion-icon>
+          <ion-label stacked>Reg No</ion-label>
+          <ion-input #regno formControlName="regno" type="text" placeholder="Your registration number" [class.invalid]="!InitialDataForm.controls.regno.valid && InitialDataForm.controls.regno.dirty">
+          </ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!InitialDataForm.controls.regno.valid && InitialDataForm.controls.regno.dirty">
+          <p>Enter a register number.</p>
+        </ion-item>
+        
+        <button ion-button full type="submit">
+            Update profile
+          </button>
+      </ion-card>
+    </form>
+    </ion-content>
+  

@@ -39,6 +39,8 @@ import { PatientDetailHistoryPage } from '../pages/common/patientDetailHistory/p
 import { PatientProfilePage } from '../pages/patient/patient-profile/patient-profile';
 import { DoctorProfilePage } from '../pages/doctor/doctor-profile/doctor-profile';
 import { PredictionReportPage } from '../pages/common/predictionReport/prediction-report';
+import { EditPatientProfilePage } from '../pages/patient/patient-profile/edit-patient-profile/edit-patient-profile';
+import { EditDoctorProfilePage } from '../pages/doctor/doctor-profile/edit-doctor-profile/edit-doctor-profile';
 
 class CameraMock extends Camera {
   getPicture(options) {
@@ -70,7 +72,9 @@ class CameraMock extends Camera {
     PatientDetailHistoryPage,
     PatientProfilePage,
     DoctorProfilePage,
-    PredictionReportPage
+    PredictionReportPage,
+    EditPatientProfilePage,
+    EditDoctorProfilePage
   ],
   imports: [
     BrowserModule,
@@ -108,7 +112,9 @@ class CameraMock extends Camera {
     PatientDetailHistoryPage,
     PatientProfilePage,
     DoctorProfilePage,
-    PredictionReportPage
+    PredictionReportPage,
+    EditPatientProfilePage,
+    EditDoctorProfilePage
   ],
   providers: [
     StatusBar,
