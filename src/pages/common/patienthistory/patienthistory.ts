@@ -4,6 +4,7 @@ import { PatientData } from '../../../providers/patient-data';
 import { Chart } from 'chart.js';
 import { PatientDetailHistoryPage } from '../patientDetailHistory/patient-detailHistory';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { PredictionReportPage } from '../predictionReport/prediction-report';
 
 @Component({
   selector: 'page-patienthistory',
@@ -43,6 +44,13 @@ export class PatientHistoryPage {
 
   }
 
+  getTime(dateUnFormatted?: Date) {
+    console.log("Unformatted date -> "+ dateUnFormatted );
+    let date = new Date(dateUnFormatted);
+    console.log("Formatted date -> "+ date );
+    return date != null ? date.getTime() : 0;
+}
+
   ionViewDidLoad() {
 
     this.patientData = this.navParams.get('patient');
@@ -50,14 +58,19 @@ export class PatientHistoryPage {
       this.afAuth.authState.subscribe(user => {
         var key = user.email.replace(/\./g, ',');
         this.patientDta.patientHBA1CReport(key).valueChanges().subscribe(HBA1Chistory => {
+
+          HBA1Chistory.sort((a: Date, b: Date) => {
+            return this.getTime(a['date']) - this.getTime(b['date']);
+        });
+
           for (var i = 0; i < HBA1Chistory.length; i++) {
             this.hba1cCount.push(HBA1Chistory[i]['hb1ac']);
             this.HBA1CchartLabels.push(HBA1Chistory[i]['date']);
           }
           this.HBA1Chistory = Object.assign([], HBA1Chistory);
           if (this.HBA1Chistory.length != 0) {
-            this.firstReport.HBA1C = this.HBA1Chistory.slice(0, 1);
-            this.HBA1Chistory.splice(0, 1);
+            this.firstReport.HBA1C = this.HBA1Chistory.slice(this.HBA1Chistory.length-1);
+            this.HBA1Chistory.splice(-1, 1);
           }
     
           this.HBA1ClineChart = new Chart(this.HBA1ClineCanvas.nativeElement, {
@@ -94,6 +107,9 @@ export class PatientHistoryPage {
         })
     
         this.patientDta.patientFBSReport(key).valueChanges().subscribe(FBShistory => {
+          FBShistory.sort((a: Date, b: Date) => {
+            return this.getTime(a['date']) - this.getTime(b['date']);
+        });
           for (var i = 0; i < FBShistory.length; i++) {
             this.fbsCount.push(FBShistory[i]['fbs']);
             this.ppbsCount.push(FBShistory[i]['ppbs']);
@@ -101,8 +117,8 @@ export class PatientHistoryPage {
           }
           this.FBShistory = Object.assign([], FBShistory);
           if (this.FBShistory.length != 0) {
-            this.firstReport.FBS = this.FBShistory.slice(0, 1);
-            this.FBShistory.splice(0, 1);
+            this.firstReport.FBS = this.FBShistory.slice(this.FBShistory.length-1);
+            this.FBShistory.splice(-1, 1);
           }
     
           this.FBSlineChart = new Chart(this.FBSlineCanvas.nativeElement, {
@@ -161,6 +177,9 @@ export class PatientHistoryPage {
         })
     
         this.patientDta.patientSeCrReport(key).valueChanges().subscribe(SerCreatineHistory => {
+          SerCreatineHistory.sort((a: Date, b: Date) => {
+            return this.getTime(a['date']) - this.getTime(b['date']);
+        });
           for (var i = 0; i < SerCreatineHistory.length; i++) {
             this.serCreCount.push(SerCreatineHistory[i]['serCret']);
             this.seruricAcidCount.push(SerCreatineHistory[i]['serUricAcid']);
@@ -168,8 +187,8 @@ export class PatientHistoryPage {
           }
           this.SerCreatineHistory = Object.assign([], SerCreatineHistory);
           if (this.SerCreatineHistory.length != 0) {
-            this.firstReport.SerCreatine = this.SerCreatineHistory.slice(0, 1);
-            this.SerCreatineHistory.splice(0, 1);
+            this.firstReport.SerCreatine = this.SerCreatineHistory.slice(this.SerCreatineHistory.length-1);
+            this.SerCreatineHistory.splice(-1, 1);
           }
     
           this.SeCrlineChart = new Chart(this.SeCrlineCanvas.nativeElement, {
@@ -228,16 +247,33 @@ export class PatientHistoryPage {
         })
       });
     }else{
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
       let patient = this.patientData;
       this.patientDta.patientHBA1CReport(patient.key).valueChanges().subscribe(HBA1Chistory => {
+        HBA1Chistory.sort((a: Date, b: Date) => {
+          return this.getTime(a['date']) - this.getTime(b['date']);
+      });
         for (var i = 0; i < HBA1Chistory.length; i++) {
           this.hba1cCount.push(HBA1Chistory[i]['hb1ac']);
           this.HBA1CchartLabels.push(HBA1Chistory[i]['date']);
         }
         this.HBA1Chistory = Object.assign([], HBA1Chistory);
         if (this.HBA1Chistory.length != 0) {
-          this.firstReport.HBA1C = this.HBA1Chistory.slice(0, 1);
-          this.HBA1Chistory.splice(0, 1);
+          this.firstReport.HBA1C = this.HBA1Chistory.slice(this.HBA1Chistory.length-1);
+          this.HBA1Chistory.splice(-1, 1);
         }
   
         this.HBA1ClineChart = new Chart(this.HBA1ClineCanvas.nativeElement, {
@@ -274,6 +310,9 @@ export class PatientHistoryPage {
       })
   
       this.patientDta.patientFBSReport(patient.key).valueChanges().subscribe(FBShistory => {
+        FBShistory.sort((a: Date, b: Date) => {
+          return this.getTime(a['date']) - this.getTime(b['date']);
+      });
         for (var i = 0; i < FBShistory.length; i++) {
           this.fbsCount.push(FBShistory[i]['fbs']);
           this.ppbsCount.push(FBShistory[i]['ppbs']);
@@ -281,8 +320,8 @@ export class PatientHistoryPage {
         }
         this.FBShistory = Object.assign([], FBShistory);
         if (this.FBShistory.length != 0) {
-          this.firstReport.FBS = this.FBShistory.slice(0, 1);
-          this.FBShistory.splice(0, 1);
+          this.firstReport.FBS = this.FBShistory.slice(this.FBShistory.length-1);
+          this.FBShistory.splice(-1, 1);
         }
   
         this.FBSlineChart = new Chart(this.FBSlineCanvas.nativeElement, {
@@ -341,6 +380,9 @@ export class PatientHistoryPage {
       })
   
       this.patientDta.patientSeCrReport(patient.key).valueChanges().subscribe(SerCreatineHistory => {
+        SerCreatineHistory.sort((a: Date, b: Date) => {
+          return this.getTime(a['date']) - this.getTime(b['date']);
+      });
         for (var i = 0; i < SerCreatineHistory.length; i++) {
           this.serCreCount.push(SerCreatineHistory[i]['serCret']);
           this.seruricAcidCount.push(SerCreatineHistory[i]['serUricAcid']);
@@ -348,8 +390,8 @@ export class PatientHistoryPage {
         }
         this.SerCreatineHistory = Object.assign([], SerCreatineHistory);
         if (this.SerCreatineHistory.length != 0) {
-          this.firstReport.SerCreatine = this.SerCreatineHistory.slice(0, 1);
-          this.SerCreatineHistory.splice(0, 1);
+          this.firstReport.SerCreatine = this.SerCreatineHistory.slice(this.SerCreatineHistory.length-1);
+          this.SerCreatineHistory.splice(-1, 1);
         }
   
         this.SeCrlineChart = new Chart(this.SeCrlineCanvas.nativeElement, {
@@ -423,6 +465,11 @@ export class PatientHistoryPage {
       historydata = this.HBA1Chistory;
     }
     let modal = this.modalCtrl.create(PatientDetailHistoryPage, { history : historydata, type: type });
+    modal.present();
+  }
+
+  viewPredictions(){
+    let modal = this.modalCtrl.create(PredictionReportPage, { lastreport : this.firstReport  });
     modal.present();
   }
 

@@ -38,6 +38,7 @@ import { HttpModule } from '@angular/http';
 import { PatientDetailHistoryPage } from '../pages/common/patientDetailHistory/patient-detailHistory';
 import { PatientProfilePage } from '../pages/patient/patient-profile/patient-profile';
 import { DoctorProfilePage } from '../pages/doctor/doctor-profile/doctor-profile';
+import { PredictionReportPage } from '../pages/common/predictionReport/prediction-report';
 
 class CameraMock extends Camera {
   getPicture(options) {
@@ -68,7 +69,8 @@ class CameraMock extends Camera {
     PatientHistoryPage,
     PatientDetailHistoryPage,
     PatientProfilePage,
-    DoctorProfilePage
+    DoctorProfilePage,
+    PredictionReportPage
   ],
   imports: [
     BrowserModule,
@@ -105,7 +107,8 @@ class CameraMock extends Camera {
     PatientHistoryPage,
     PatientDetailHistoryPage,
     PatientProfilePage,
-    DoctorProfilePage
+    DoctorProfilePage,
+    PredictionReportPage
   ],
   providers: [
     StatusBar,
