@@ -54,7 +54,7 @@ export class PatientData {
     return this.db.list('PatientReports/'+ patinetEmail + '/report3');
   }
 
-  patientOCRFullReportFBS(reportData, user){;
+  patientOCRFullReportFBS(reportData, user){
     var patientEmail = this.transform(user)
     this.db.list('PatientReports/'+ patientEmail + '/report3').push({
       date: "25/06/2018",
@@ -64,6 +64,10 @@ export class PatientData {
       serUricAcid: 4.5,
       fullReport : reportData
     })
+  }
+
+  patientPredictionReport() {
+    return this.db.list('historyData');
   }
 
 }

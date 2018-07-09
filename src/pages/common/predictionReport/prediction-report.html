@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Predictions</ion-title>
+    <ion-title>Analyzed History Data</ion-title>
     <ion-buttons left>
       <button ion-button icon-only (click)="viewCtrl.dismiss()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -10,73 +10,59 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-<div *ngIf="type == 'FBS'">
-    <div  *ngFor="let f of patient" >
-      <ion-item-divider color="devider">
-        FBS Report
-        <p item-end>{{f.date}}</p>
-      </ion-item-divider>
-        <ion-item>
-          <ion-label>
-            FBS Count
-          </ion-label>
-          <div item-content>
-            {{f.fbs}}
-          </div>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            PPBS Count
-          </ion-label>
-          <div item-content>
-            {{f.ppbs}}
-          </div>
-        </ion-item>
-    </div>
-    </div>
+  <h4>Suggesstions are made from the last report you have uploaded</h4>
+  <ion-card>
+    <ion-card-header>
+      FBS and PPBS Suggesstions 
+    </ion-card-header>
+    <ion-card-content>
+        <h2>Last report data</h2>
+        <li >FBS - {{patient.FBS[0].fbs}}</li>
+         <li>PPBS - {{patient.FBS[0].ppbs}}</li>
+        <br/>
+      <h2>Symptoms</h2>
+      <li >The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
+       <li>adasdasdasdasdasasdasd</li>
+      <br/>
+      <h2>Medicines</h2>
+      <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
+       <li>adasdasdasdasdasasdasd</li>
+    </ion-card-content>
+  </ion-card>
 
-    <div *ngIf="type == 'Serum'">
-      <div  *ngFor="let sc of patient">
-      <ion-item-divider color="devider">
-        Serum Creatinine Report
-        <p item-end>{{sc.date}}</p>
-      </ion-item-divider>
-        <ion-item>
-          <ion-label>
-            Serum Creatinine Count
-          </ion-label>
-          <div item-content>
-            {{sc.serCret}}
-          </div>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            Serum Uric Acid Count
-          </ion-label>
-          <div item-content>
-            {{sc.serUricAcid}}
-          </div>
-        </ion-item>
-    </div>
-    </div>
+  <ion-card>
+      <ion-card-header>
+          HBA1C Suggesstions 
+      </ion-card-header>
+      <ion-card-content>
+          <h2>Last report data</h2>
+          <li >HBA1C - {{patient.HBA1C[0].hb1ac}}</li>
+          <br/>
+        <h2>Symptoms</h2>
+        <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
+         <li>adasdasdasdasdasasdasd</li>
+        <br/>
+        <h2>Medicines</h2>
+        <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
+         <li>adasdasdasdasdasasdasd</li>
+      </ion-card-content>
+    </ion-card>
 
-    <div *ngIf="type == 'HB1AC'">
-      <div *ngFor="let h of patient">
-      <ion-item-divider color="devider">
-        HBA1C Report
-        <p item-end>{{h.date}}</p>
-      </ion-item-divider>
-        <ion-item>
-          <ion-label>
-            HBA1C Count
-          </ion-label>
-          <div item-content>
-            {{h.hb1ac}}
-          </div>
-        </ion-item>
-    </div>
-    </div>
-
-  </ion-list>
+    <ion-card>
+        <ion-card-header>
+            Serum Creatinine Suggesstions 
+        </ion-card-header>
+        <ion-card-content>
+            <h2>Last report data</h2>
+            <li >Serum Creatinine - {{patient.SerCreatine[0].serCret}}</li>
+            <br/>
+          <h2>Symptoms</h2>
+          <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
+           <li>adasdasdasdasdasasdasd</li>
+          <br/>
+          <h2>Medicines</h2>
+          <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
+           <li>adasdasdasdasdasasdasd</li>
+        </ion-card-content>
+      </ion-card>
 </ion-content>
