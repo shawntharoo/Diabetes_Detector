@@ -5,6 +5,7 @@ import { Chart } from 'chart.js';
 import { PatientDetailHistoryPage } from '../patientDetailHistory/patient-detailHistory';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { PredictionReportPage } from '../predictionReport/prediction-report';
+import { Prescription } from '../prescription/prescription';
 
 @Component({
   selector: 'page-patienthistory',
@@ -45,9 +46,7 @@ export class PatientHistoryPage {
   }
 
   getTime(dateUnFormatted?: Date) {
-    console.log("Unformatted date -> "+ dateUnFormatted );
     let date = new Date(dateUnFormatted);
-    console.log("Formatted date -> "+ date );
     return date != null ? date.getTime() : 0;
 }
 
@@ -470,6 +469,11 @@ export class PatientHistoryPage {
 
   viewPredictions(){
     let modal = this.modalCtrl.create(PredictionReportPage, { lastreport : this.firstReport  });
+    modal.present();
+  }
+
+  viewPrescription(report){
+    let modal = this.modalCtrl.create(Prescription, { Report : report });
     modal.present();
   }
 

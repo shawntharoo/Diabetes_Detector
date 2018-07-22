@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Prescription</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="viewCtrl.dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="prescription">
+  <ion-list>
+      <ion-item-divider color="devider">
+          Report date
+          <p item-end>{{report.date}}</p>
+        </ion-item-divider>
+    <ion-list-header>
+      Symptoms
+    </ion-list-header>
+    <ion-item *ngFor="let symptom of prescription[0]"> <ion-icon name="done-all" item-start large ></ion-icon> {{symptom}}</ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Medicines
+    </ion-list-header>
+    <ion-item  *ngFor="let medicine of prescription[1]"> <ion-icon name="done-all" item-start large ></ion-icon> {{medicine}}</ion-item>
+  </ion-list>
+</ion-content>

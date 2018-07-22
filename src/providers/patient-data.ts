@@ -70,4 +70,8 @@ export class PatientData {
     return this.db.list('historyData');
   }
 
+  patientPrescription(presKey){
+ return this.db.list('prescriptions/'+ presKey);
+  }
+
 }

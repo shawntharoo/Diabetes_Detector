@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, forwardRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -41,6 +41,9 @@ import { DoctorProfilePage } from '../pages/doctor/doctor-profile/doctor-profile
 import { PredictionReportPage } from '../pages/common/predictionReport/prediction-report';
 import { EditPatientProfilePage } from '../pages/patient/patient-profile/edit-patient-profile/edit-patient-profile';
 import { EditDoctorProfilePage } from '../pages/doctor/doctor-profile/edit-doctor-profile/edit-doctor-profile';
+import { Prescription } from '../pages/common/prescription/prescription';
+
+
 
 class CameraMock extends Camera {
   getPicture(options) {
@@ -74,7 +77,8 @@ class CameraMock extends Camera {
     DoctorProfilePage,
     PredictionReportPage,
     EditPatientProfilePage,
-    EditDoctorProfilePage
+    EditDoctorProfilePage,
+    Prescription
   ],
   imports: [
     BrowserModule,
@@ -114,7 +118,8 @@ class CameraMock extends Camera {
     DoctorProfilePage,
     PredictionReportPage,
     EditPatientProfilePage,
-    EditDoctorProfilePage
+    EditDoctorProfilePage,
+    Prescription
   ],
   providers: [
     StatusBar,

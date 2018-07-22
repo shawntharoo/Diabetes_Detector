@@ -10,59 +10,59 @@
 </ion-header>
 
 <ion-content>
-  <h4>Suggesstions are made from the last report you have uploaded</h4>
-  <ion-card>
-    <ion-card-header>
-      FBS and PPBS Suggesstions 
+  <h5 class="title">Suggesstions are made from the last report you have uploaded</h5>
+  <ion-card class="card_full">
+    <ion-card-header class="card_header">
+      FBS and PPBS Suggesstions
     </ion-card-header>
     <ion-card-content>
-        <h2>Last report data</h2>
-        <li >FBS - {{patient.FBS[0].fbs}}</li>
-         <li>PPBS - {{patient.FBS[0].ppbs}}</li>
-        <br/>
-      <h2>Symptoms</h2>
-      <li >The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
-       <li>adasdasdasdasdasasdasd</li>
+      <h2><b>Last report data</b></h2>
+      <li class="past_report_data">FBS - {{patient.FBS[0].fbs}}</li>
+      <li class="past_report_data">PPBS - {{patient.FBS[0].ppbs}}</li>
       <br/>
-      <h2>Medicines</h2>
-      <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
-       <li>adasdasdasdasdasasdasd</li>
+      <div *ngFor="let data of fbsPrediction">
+        <h2>Possible Symptoms</h2>
+        <li *ngFor="let symptom of data.symptoms">{{symptom}}</li>
+        <br/>
+        <h2>Recommended Medicines</h2>
+        <li *ngFor="let medicine of data.medicines">{{medicine}}</li>
+      </div>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-      <ion-card-header>
-          HBA1C Suggesstions 
-      </ion-card-header>
-      <ion-card-content>
-          <h2>Last report data</h2>
-          <li >HBA1C - {{patient.HBA1C[0].hb1ac}}</li>
-          <br/>
-        <h2>Symptoms</h2>
-        <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
-         <li>adasdasdasdasdasasdasd</li>
+  <ion-card class="card_full">
+    <ion-card-header class="card_header">
+      HBA1C Suggesstions
+    </ion-card-header>
+    <ion-card-content>
+      <h2><b>Last report data</b></h2>
+      <li class="past_report_data">HBA1C - {{patient.HBA1C[0].hb1ac}}</li>
+      <br/>
+      <div *ngFor="let data of hba1cPrediction">
+        <h2>Possible Symptoms</h2>
+        <li *ngFor="let symptom of data.symptoms">{{symptom}}</li>
         <br/>
-        <h2>Medicines</h2>
-        <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
-         <li>adasdasdasdasdasasdasd</li>
-      </ion-card-content>
-    </ion-card>
+        <h2>Recommended Medicines</h2>
+        <li *ngFor="let medicine of data.medicines">{{medicine}}</li>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
-    <ion-card>
-        <ion-card-header>
-            Serum Creatinine Suggesstions 
-        </ion-card-header>
-        <ion-card-content>
-            <h2>Last report data</h2>
-            <li >Serum Creatinine - {{patient.SerCreatine[0].serCret}}</li>
-            <br/>
-          <h2>Symptoms</h2>
-          <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
-           <li>adasdasdasdasdasasdasd</li>
-          <br/>
-          <h2>Medicines</h2>
-          <li>The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.</li>
-           <li>adasdasdasdasdasasdasd</li>
-        </ion-card-content>
-      </ion-card>
+  <ion-card class="card_full">
+    <ion-card-header class="card_header">
+      Serum Creatinine Suggesstions
+    </ion-card-header>
+    <ion-card-content>
+      <h2><b>Last report data</b></h2>
+      <li class="past_report_data">Serum Creatinine - {{patient.SerCreatine[0].serCret}}</li>
+      <br/>
+      <div *ngFor="let data of serCreatine">
+        <h2>Possible Symptoms</h2>
+        <li *ngFor="let symptom of data.symptoms">{{symptom}}</li>
+        <br/>
+        <h2>Recommended Medicines</h2>
+        <li *ngFor="let medicine of data.medicines">{{medicine}}</li>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

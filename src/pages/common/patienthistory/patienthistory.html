@@ -41,6 +41,9 @@
     <ion-item-divider *ngFor="let f of firstReport.FBS">
       FBS Report
       <p item-end>{{f.date}}</p>
+      <button ion-button icon-end item-end clear small (click)="viewPrescription(firstReport.FBS)">
+          <div>View Prescription</div>
+        </button>
     </ion-item-divider>
     <div *ngFor="let f of firstReport.FBS">
       <ion-item>
@@ -60,9 +63,15 @@
         </div>
       </ion-item>
     </div>
+
+
+
     <ion-item-divider *ngFor="let sc of firstReport.SerCreatine">
       Serum Creatinine Report
       <p item-end>{{sc.date}}</p>
+      <button ion-button icon-end item-end clear small (click)="viewPrescription(firstReport.SerCreatine)">
+          <div>View Prescription</div>
+        </button>
     </ion-item-divider>
     <div *ngFor="let sc of firstReport.SerCreatine">
       <ion-item>
@@ -82,9 +91,13 @@
         </div>
       </ion-item>
     </div>
+
     <ion-item-divider *ngFor="let h of firstReport.HBA1C">
       HBA1C Report
       <p item-end>{{h.date}}</p>
+      <button ion-button icon-end item-end clear small (click)="viewPrescription(firstReport.HBA1C)">
+          <div>View Prescription</div>
+        </button>
     </ion-item-divider>
     <div *ngFor="let h of firstReport.HBA1C">
       <ion-item>
@@ -96,6 +109,7 @@
         </div>
       </ion-item>
     </div>
+
   </ion-list>
 
   <ion-card>
