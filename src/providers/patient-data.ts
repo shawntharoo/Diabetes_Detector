@@ -3,11 +3,12 @@ import * as firebase from 'firebase/app';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Item } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class PatientData {
   user: any;
-  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth) {
+  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, public http: HttpClient) {
     this.afAuth.authState.subscribe(user => {
       this.user = user;
     });
@@ -72,6 +73,19 @@ export class PatientData {
 
   patientPrescription(presKey){
  return this.db.list('prescriptions/'+ presKey);
+  }
+
+  patientPredictedValue(hsitory){
+    return new Promise((resolve,reject)=>{
+      this.http.post('http://localhost:3001/api/prediction',hsitory)
+        .subscribe(data=>{
+          resolve(data)
+        },
+        err =>{
+          reject(err)
+        }
+      )
+    })
   }
 
 }

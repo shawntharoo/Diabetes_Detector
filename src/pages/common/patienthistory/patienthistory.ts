@@ -38,7 +38,10 @@ export class PatientHistoryPage {
   SerCreatineHistory: any;
 
   patientData: any;
-
+  predict :Array< {
+    count : Number,
+    date : String
+  }> = [];
   firstReport: any = {};
 
   constructor(public navCtrl: NavController, private navParams: NavParams, private patientDta: PatientData, public modalCtrl: ModalController, public afAuth: AngularFireAuth) {
@@ -65,7 +68,13 @@ export class PatientHistoryPage {
           for (var i = 0; i < HBA1Chistory.length; i++) {
             this.hba1cCount.push(HBA1Chistory[i]['hb1ac']);
             this.HBA1CchartLabels.push(HBA1Chistory[i]['date']);
+            this.predict[i].count = HBA1Chistory[i]['hb1ac'];
+            this.predict[i].date = HBA1Chistory[i]['date'];
           }
+          this.patientDta.patientPredictedValue(this.predict).then(resp => {
+            console.log(resp);
+          })
+
           this.HBA1Chistory = Object.assign([], HBA1Chistory);
           if (this.HBA1Chistory.length != 0) {
             this.firstReport.HBA1C = this.HBA1Chistory.slice(this.HBA1Chistory.length-1);
@@ -268,7 +277,16 @@ export class PatientHistoryPage {
         for (var i = 0; i < HBA1Chistory.length; i++) {
           this.hba1cCount.push(HBA1Chistory[i]['hb1ac']);
           this.HBA1CchartLabels.push(HBA1Chistory[i]['date']);
+          let predictVal = {
+            count : HBA1Chistory[i]['hb1ac'],
+            date : HBA1Chistory[i]['date']
+          }
+          this.predict.push(predictVal);
         }
+        this.patientDta.patientPredictedValue(this.predict).then(resp => {
+          console.log(resp);
+        })
+
         this.HBA1Chistory = Object.assign([], HBA1Chistory);
         if (this.HBA1Chistory.length != 0) {
           this.firstReport.HBA1C = this.HBA1Chistory.slice(this.HBA1Chistory.length-1);

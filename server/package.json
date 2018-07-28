@@ -1,0 +1,32 @@
+{
+  "name": "todos",
+  "version": "1.0.0",
+  "description": "Not just another Todo app",
+  "main": "index.js",
+  "scripts": {
+    "server": "node .",
+    "http-server": "http-server -a localhost -p 8100 -c-l ./app",
+    "test": "npm-run-all -p -r server http-server",
+    "start": "npm-run-all -p -r server http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "Josh Staples",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http-server": "^0.11.1",
+    "qs": "^6.3.0",
+    "request": "^2.76.0",
+    "timeseries-analysis": "^1.0.12",
+    "cors": "^2.8.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4",
+    "npm-run-all": "^4.1.3"
+  }
+}
