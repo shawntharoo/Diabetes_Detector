@@ -15,6 +15,7 @@
     </ion-card-header>
     <ion-card-content>
       <canvas #FBSlineCanvas></canvas>
+      <p *ngIf="fbsForecast">FBS Forecasted Value = {{fbsForecast}}</p>
     </ion-card-content>
   </ion-card>
 
@@ -24,6 +25,7 @@
     </ion-card-header>
     <ion-card-content>
       <canvas #HBA1ClineCanvas></canvas>
+      <p *ngIf="hba1cForecast">HBA1C Forecasted Value = {{hba1cForecast}}</p>
     </ion-card-content>
   </ion-card>
 
@@ -33,6 +35,7 @@
     </ion-card-header>
     <ion-card-content>
       <canvas #SeCrlineCanvas></canvas>
+      <p *ngIf="serCreatineForecast">Serum Creatinine Forecasted Value = {{serCreatineForecast}}</p>
     </ion-card-content>
   </ion-card>
 

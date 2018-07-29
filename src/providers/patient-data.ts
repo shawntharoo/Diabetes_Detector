@@ -79,6 +79,7 @@ export class PatientData {
     return new Promise((resolve,reject)=>{
       this.http.post('http://localhost:3001/api/prediction',hsitory)
         .subscribe(data=>{
+          console.log(data)
           resolve(data)
         },
         err =>{
