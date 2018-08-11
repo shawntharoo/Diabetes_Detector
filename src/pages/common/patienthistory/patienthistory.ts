@@ -34,6 +34,7 @@ export class PatientHistoryPage {
   FBShistory: any;
   fbsForecast: any;
   FBSPredict : any = [];
+  lifestyle : any = null;
 
 
   //Serum Creatine Report variables
@@ -74,6 +75,7 @@ export class PatientHistoryPage {
 
     this.patientData = this.navParams.get('patient');
     if (this.patientData == undefined) {
+      console.log("inside patient")
       this.afAuth.authState.subscribe(user => {
         var key = user.email.replace(/\./g, ',');
         this.patientDta.patientHBA1CReport(key).valueChanges().subscribe(HBA1Chistory => {
@@ -159,6 +161,16 @@ export class PatientHistoryPage {
           if (this.FBShistory.length != 0) {
             this.firstReport.FBS = this.FBShistory.slice(this.FBShistory.length - 1);
             this.FBShistory.splice(-1, 1);
+
+            this.patientDta.lifestyleSuggesions().valueChanges().subscribe(resp => {
+              for(var z=0; z< resp.length; z++){
+                let fbsVal = this.firstReport.FBS[0].fbs;
+                if(fbsVal <= resp[z]['max_value'] && fbsVal >= resp[z]['min_value']){
+                  this.lifestyle = resp[z];
+                }
+              }
+              console.log(resp)
+            })
           }
 
           this.FBSlineChart = new Chart(this.FBSlineCanvas.nativeElement, {

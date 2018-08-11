@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Item } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
+import { resolveDefinition } from '../../node_modules/@angular/core/src/view/util';
 
 @Injectable()
 export class PatientData {
@@ -79,7 +80,6 @@ export class PatientData {
     return new Promise((resolve,reject)=>{
       this.http.post('http://localhost:3001/api/prediction',hsitory)
         .subscribe(data=>{
-          console.log(data)
           resolve(data)
         },
         err =>{
@@ -87,6 +87,10 @@ export class PatientData {
         }
       )
     })
+  }
+
+  lifestyleSuggesions(){
+    return this.db.list('LifeStyles');
   }
 
 }

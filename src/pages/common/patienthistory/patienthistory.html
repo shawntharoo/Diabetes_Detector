@@ -16,6 +16,9 @@
     <ion-card-content>
       <canvas #FBSlineCanvas></canvas>
       <p *ngIf="fbsForecast" class="forecastTitle">FBS Forecasted Value :</p>  <span class="forecastValue">{{fbsForecast}}</span>
+      <br/><br/>
+      <h3 *ngIf = "lifestyle" class="forecastTitle">Suggested lifestyle</h3>
+      <p *ngIf = "lifestyle"><b>{{lifestyle.description}}</b></p>
     </ion-card-content>
   </ion-card>
 
