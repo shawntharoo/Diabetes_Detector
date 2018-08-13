@@ -169,7 +169,6 @@ export class PatientHistoryPage {
                   this.lifestyle = resp[z];
                 }
               }
-              console.log(resp)
             })
           }
 
