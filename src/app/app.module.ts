@@ -23,6 +23,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { PatientTabsPage } from '../pages/patient/patient-tabs/patient-tabs';
 import { DoctorHistoryPage } from '../pages/doctor/doctor-history/doctor-history';
 import { PatientHistoryPage } from '../pages/common/patienthistory/patienthistory';
+import { LifestylePage } from '../pages/patient/patient-lifestyle/lifestyle';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -79,7 +80,8 @@ class CameraMock extends Camera {
     PredictionReportPage,
     EditPatientProfilePage,
     EditDoctorProfilePage,
-    Prescription
+    Prescription,
+    LifestylePage
   ],
   imports: [
     BrowserModule,
@@ -121,7 +123,8 @@ class CameraMock extends Camera {
     PredictionReportPage,
     EditPatientProfilePage,
     EditDoctorProfilePage,
-    Prescription
+    Prescription,
+    LifestylePage
   ],
   providers: [
     StatusBar,

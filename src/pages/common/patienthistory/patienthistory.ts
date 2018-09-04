@@ -6,7 +6,7 @@ import { PatientDetailHistoryPage } from '../patientDetailHistory/patient-detail
 import { AngularFireAuth } from 'angularfire2/auth';
 import { PredictionReportPage } from '../predictionReport/prediction-report';
 import { Prescription } from '../prescription/prescription';
-
+import { LifestylePage }  from '../../patient/patient-lifestyle/lifestyle';
 @Component({
   selector: 'page-patienthistory',
   templateUrl: 'patienthistory.html'
@@ -568,6 +568,11 @@ export class PatientHistoryPage {
 
   viewPrescription(report) {
     let modal = this.modalCtrl.create(Prescription, { Report: report });
+    modal.present();
+  }
+
+  openLifestyle(lifestyle){
+    let modal = this.modalCtrl.create(LifestylePage, { lifestyle: lifestyle });
     modal.present();
   }
 
