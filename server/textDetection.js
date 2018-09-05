@@ -13,6 +13,7 @@ exports.readTextfromImg = function (req, res) {
     client
         .textDetection(request)
         .then(response => {
+            //retrieve function code should go here
             res.status(200).json(response);
         })
         .catch(error => {
