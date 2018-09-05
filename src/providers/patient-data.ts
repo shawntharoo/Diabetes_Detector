@@ -5,6 +5,7 @@ import { Item } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
 import { resolveDefinition } from '../../node_modules/@angular/core/src/view/util';
+import { ConstantsProvider } from './constants/constants';
 
 @Injectable()
 export class PatientData {
@@ -78,7 +79,7 @@ export class PatientData {
 
   patientPredictedValue(hsitory){
     return new Promise((resolve,reject)=>{
-      this.http.post('http://18.212.166.4:3001/api/prediction',hsitory)
+      this.http.post(ConstantsProvider.URL_PREDICTION,hsitory)
         .subscribe(data=>{
           resolve(data)
         },

@@ -1,13 +1,12 @@
 {
-  "name": "todos",
+  "name": "Diabeats",
   "version": "1.0.0",
-  "description": "Not just another Todo app",
+  "description": "Diabeats Platform Client App",
   "main": "index.js",
   "scripts": {
     "server": "node .",
-    "http-server": "http-server -a localhost -p 8100 -c-l ./app",
-    "test": "npm-run-all -p -r server http-server",
-    "start": "npm-run-all -p -r server http-server"
+    "test": "node index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,13 +16,14 @@
   "author": "Josh Staples",
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/vision": "^0.21.0",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.4",
     "express": "^4.14.0",
     "http-server": "^0.11.1",
     "qs": "^6.3.0",
     "request": "^2.76.0",
-    "timeseries-analysis": "^1.0.12",
-    "cors": "^2.8.4"
+    "timeseries-analysis": "^1.0.12"
   },
   "devDependencies": {
     "nodemon": "^1.17.4",
