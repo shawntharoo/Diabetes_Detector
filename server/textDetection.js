@@ -17,6 +17,7 @@ exports.readTextfromImg = function (req, res) {
             res.status(200).json(response);
         })
         .catch(error => {
+            //error function should go here
             res.status(500).json(error);
         })
 }
