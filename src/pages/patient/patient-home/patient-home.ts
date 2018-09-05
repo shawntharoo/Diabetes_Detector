@@ -4,11 +4,8 @@ import { NavController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 import { AuthData } from '../../../providers/auth-data';
 import { DoctorData } from '../../../providers/doctor-data';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable, base64 } from '@firebase/util';
 import { ModalController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { GoogleCloudVisionServiceProvider } from '../../../providers/google-cloud-vision-service';
 import { PatientData } from '../../../providers/patient-data';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -22,7 +19,7 @@ export class PatientHomePage {
   base64Image:any;
   showCard:boolean = false;
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData, public doctorData: DoctorData, public modalCtrl: ModalController, private camera: Camera,
-    private vision: GoogleCloudVisionServiceProvider, public patientData: PatientData, public afAuth: AngularFireAuth, public getTxtFrmRep:GetTextFromReportProvider ) {
+     public patientData: PatientData, public afAuth: AngularFireAuth, public getTxtFrmRep:GetTextFromReportProvider ) {
 
   }
   takePhoto() {
