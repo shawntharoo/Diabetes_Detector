@@ -79,7 +79,7 @@ export class PatientData {
 
   patientPredictedValue(hsitory){
     return new Promise((resolve,reject)=>{
-      this.http.post(ConstantsProvider.URL_PREDICTION,hsitory)
+      this.http.post('http://18.212.166.4:3001/api/prediction',hsitory)
         .subscribe(data=>{
           resolve(data)
         },
