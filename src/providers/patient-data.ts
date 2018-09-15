@@ -5,6 +5,7 @@ import { Item } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
 import { resolveDefinition } from '../../node_modules/@angular/core/src/view/util';
+import { ConstantsProvider } from './constants/constants';
 
 @Injectable()
 export class PatientData {

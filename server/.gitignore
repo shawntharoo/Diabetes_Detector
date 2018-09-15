@@ -11,7 +11,7 @@ log.txt
 *.sublime-workspace
 .vscode/
 npm-debug.log*
-
+package-lock.json
 .idea/
 .sourcemaps/
 .sass-cache/
@@ -33,4 +33,4 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
-typings/
+service-account.json
