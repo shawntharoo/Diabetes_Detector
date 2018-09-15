@@ -44,6 +44,7 @@ import { PredictionReportPage } from '../pages/common/predictionReport/predictio
 import { EditPatientProfilePage } from '../pages/patient/patient-profile/edit-patient-profile/edit-patient-profile';
 import { EditDoctorProfilePage } from '../pages/doctor/doctor-profile/edit-doctor-profile/edit-doctor-profile';
 import { Prescription } from '../pages/common/prescription/prescription';
+import { IAgreePage } from '../pages/common/IAgree/iagree';
 
 
 
@@ -81,7 +82,8 @@ class CameraMock extends Camera {
     EditPatientProfilePage,
     EditDoctorProfilePage,
     Prescription,
-    LifestylePage
+    LifestylePage,
+    IAgreePage
   ],
   imports: [
     BrowserModule,
@@ -124,7 +126,8 @@ class CameraMock extends Camera {
     EditPatientProfilePage,
     EditDoctorProfilePage,
     Prescription,
-    LifestylePage
+    LifestylePage,
+    IAgreePage
   ],
   providers: [
     StatusBar,

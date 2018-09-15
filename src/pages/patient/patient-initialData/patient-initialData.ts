@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import {
     IonicPage, NavController, LoadingController,
-    AlertController
+    AlertController,ModalController
 } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../../providers/auth-data';
 import { PatientData } from '../../../providers/patient-data';
 import { EmailValidator } from '../../../validators/email';
 import { PatientPaymentPage } from '../patient-payment/patient-payment';
+import { IAgreePage } from '../../common/IAgree/iagree';
 
 
 /**
@@ -29,7 +30,7 @@ export class PatientInitialData {
 
     constructor(public nav: NavController, public authData: AuthData,
         public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-        public alertCtrl: AlertController, public patientData: PatientData) {
+        public alertCtrl: AlertController, public patientData: PatientData, public modalCtrl: ModalController) {
 
         this.patientData.loadAllDoctors().valueChanges().subscribe(doctor => this.doctors = doctor)
 
@@ -51,7 +52,13 @@ export class PatientInitialData {
         if (!this.InitialDataForm.valid) {
             console.log(this.InitialDataForm.value);
         } else {
-            this.patientData.initialPatientData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor, this.InitialDataForm.value.age)
+
+            let profileModal = this.modalCtrl.create(IAgreePage, { type: 'patient' });
+            profileModal.onDidDismiss(data => {
+                console.log(data)
+              if(data.agree == 'agree'){
+
+                this.patientData.initialPatientData(this.InitialDataForm.value.firstname, this.InitialDataForm.value.lastname, this.InitialDataForm.value.doctor, this.InitialDataForm.value.age)
                 .then(() => {
                     this.loading.dismiss().then(() => {
                         this.nav.setRoot(PatientPaymentPage);
@@ -72,6 +79,16 @@ export class PatientInitialData {
                 });
             this.loading = this.loadingCtrl.create();
             this.loading.present();
+              }
+            });
+            profileModal.present();
+
+
+
+
+
+
+
         }
     }
 
