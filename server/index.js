@@ -48,8 +48,6 @@ router.route('/prediction').post(function (req, res) {
 router.route('/test').get(function (req, res) {
     return res.status(200).send({ "connected": true });
 });
-const textDetect = require('./textDetection.js');
-router.route('/textdetect').post(textDetect.readTextfromImg);
 
 /**
  * Prefix all router calls with 'api'
