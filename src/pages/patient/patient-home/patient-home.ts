@@ -1,6 +1,6 @@
 import { GetTextFromReportProvider } from './../../../providers/get-text-from-report/get-text-from-report';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
 import { AuthData } from '../../../providers/auth-data';
 import { DoctorData } from '../../../providers/doctor-data';
@@ -14,21 +14,51 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'patient-home.html'
 })
 export class PatientHomePage {
-  visionres: string
+  visionres: any
   items: any[]
   base64Image:any;
   showCard:boolean = false;
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData, public doctorData: DoctorData, public modalCtrl: ModalController, private camera: Camera,
-     public patientData: PatientData, public afAuth: AngularFireAuth, public getTxtFrmRep:GetTextFromReportProvider ) {
+     public patientData: PatientData, public afAuth: AngularFireAuth, public getTxtFrmRep:GetTextFromReportProvider, public alertCtrl:AlertController ) {
 
   }
-  takePhoto() {
+  callCam(){
+      let alert = this.alertCtrl.create();
+      alert.setTitle('Report Type');
+  
+      alert.addInput({
+        type: 'radio',
+        label: 'HBA1C',
+        value: "[\"HBA1C\"]",
+        checked: true
+      });
+  
+      alert.addInput({
+        type: 'radio',
+        label: 'Serum Creatinine',
+        value: "[\"SERUM\",\"CREATININE\"]"
+      });
+  
+      alert.addInput({
+        type: 'radio',
+        label: 'FBS',
+        value: "[\"FASTING\",\"BLOOD\",\"GLUCOSE\"]"
+      });
+      alert.addButton({
+        text: 'Capture Report',
+        handler: (data: any) => {
+          this.takePhoto(data);
+        }
+      });
+      alert.addButton('Cancel');
+      alert.present();
+  
+  }
+  takePhoto(searchTerms) {
     const options: CameraOptions = {
       quality: 100,
-      targetHeight: 500,
-      targetWidth: 500,
       destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
+      encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
@@ -42,12 +72,10 @@ export class PatientHomePage {
       // }, err => {
       //   console.log(err);
       // });
-      this.getTxtFrmRep.getText(imageData).then((response)=>{
-        let res = response;
-        this.visionres = res[0].fullTextAnnotation.text;
-        this.showCard = true;
+      this.getTxtFrmRep.getText(imageData,JSON.parse(searchTerms)).then((response)=>{
+        this.visionres = response
       }).catch((error)=>{
-        console.error(error);
+        this.visionres = JSON.stringify(error)
       })
     }, err => {
       console.error(err);

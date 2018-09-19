@@ -14,9 +14,13 @@ export class GetTextFromReportProvider {
   constructor(public http: HttpClient) {
     console.log('Hello GetTextFromReportProvider Provider');
   }
-  getText(byteArray) {
+  getText(byteArray,searchTerms) {
+    const postData = {
+      image:byteArray,
+      search_terms:searchTerms
+    }
     return new Promise((resolve, reject) => {
-      this.http.post(ConstantsProvider.URL_TEXT_DETECT, byteArray)
+      this.http.post(ConstantsProvider.URL_TEXT_DETECT, postData)
         .subscribe(response => {
           resolve(response);
         },
