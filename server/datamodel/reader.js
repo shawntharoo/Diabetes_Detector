@@ -11,7 +11,7 @@ exports.reader = function(req, res) {
     });
     if (complicationName == null) {
       res.status(500).json({ error: "no complication found" });
-    };
+    }
   } else res.status(500).json({ error: "please include at least 3 symptoms" });
 };
 function getComplicationName(modelObject, symptoms) {
@@ -27,3 +27,15 @@ function getComplicationName(modelObject, symptoms) {
     return "none";
   }
 }
+
+exports.getAllSymptoms = function(req, res) {
+  let outPutArr = [];
+  dataModel.complications.forEach(element => {
+    element.symptoms.forEach(e => {
+      if(outPutArr.indexOf(e)==-1){
+        outPutArr.push(e);
+      }
+    })
+  });
+  res.status(200).json(({"symptoms" : outPutArr.sort()}));
+};

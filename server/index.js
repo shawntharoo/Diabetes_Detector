@@ -51,6 +51,8 @@ router.route('/test').get(function (req, res) {
 	return res.status(200).send({ 'connected': true });
 });
 router.route('/getcomplication').post(dataModelReader.reader);
+
+router.route('/getallsymptoms').get(dataModelReader.getAllSymptoms);
 /**
  * Prefix all router calls with 'api'
  */
