@@ -1,0 +1,92 @@
+{
+  "complications": [
+    {
+      "name": "nephropathy",
+      "type": "long-term",
+      "symptoms": [
+        "drowsiness",
+        "muscle twitching",
+        "poor appetite",
+        "swelling of hands",
+        "swelling of face",
+        "swelling of feet",
+        "trouble sleeping",
+        "trouble concentrating",
+        "weakness"
+      ]
+    },
+    {
+      "name": "neuropathy",
+      "type": "long-term",
+      "symptoms": [
+        "burning pain",
+        "shooting pain",
+        "loss of ability to detect changes in temperature",
+        "loss of ability to feel pain",
+        "loss of coordination",
+        "tingling and numbness"
+      ]
+    },
+    {
+      "name": "retinopathy",
+      "type": "long-term",
+      "symptoms": ["blurry vision", "flashes", "floaters", "retinal Bleeding"]
+    },
+    {
+      "name": "diabetic ketoacidosis",
+      "type": "short-term",
+      "symptoms": [
+        "abdominal pain",
+        "being very thirsty",
+        "blurry vision",
+        "breathing changes deep sighing breaths",
+        "frequently passing urine",
+        "high blood glucose levels",
+        "ketones in the blood/urine",
+        "smell of ketones on breath",
+        "vomiting"
+      ]
+    },
+    {
+      "name": "hyper",
+      "type": "short-term",
+      "symptoms": [
+        "being very thirsty",
+        "headaches",
+        "frequently passing urine",
+        "tiredness",
+        "lethargy"
+      ]
+    },
+    {
+      "name": "hyperosmolar hyperglycaemic state",
+      "type": "short-term",
+      "symptoms": [
+        "being very thirsty",
+        "disorientation",
+        "drowsiness",
+        "trouble concentrating",
+        "nausea",
+        "frequently passing urine"
+      ]
+    },
+    {
+      "name": "hypo",
+      "type": "short-term",
+      "symptoms": [
+        "being anxious",
+        "being irritable",
+        "being hungry",
+        "going Pale",
+        "trouble concentrating",
+        "lips feeling tingly",
+        "palpitations",
+        "high pulse rate",
+        "sweating",
+        "tiredness",
+        "trembling",
+        "feeling shaky"
+      ]
+    }
+  ]
+}
