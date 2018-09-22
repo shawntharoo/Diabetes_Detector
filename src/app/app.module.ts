@@ -47,7 +47,7 @@ import { Prescription } from '../pages/common/prescription/prescription';
 import { IAgreePage } from '../pages/common/IAgree/iagree';
 import { GetTextFromReportProvider } from '../providers/get-text-from-report/get-text-from-report';
 import { ConstantsProvider } from '../providers/constants/constants';
-
+import {SymptomsModalPageModule} from '../pages/symptoms-modal/symptoms-modal.module'
 
 @NgModule({
   declarations: [
@@ -91,7 +91,8 @@ import { ConstantsProvider } from '../providers/constants/constants';
       }),
     AngularFireModule.initializeApp(firebaseConfig.fire),
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    SymptomsModalPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

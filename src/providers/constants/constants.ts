@@ -13,4 +13,5 @@ export class ConstantsProvider {
   public static URL_PREDICTION:string = ConstantsProvider.URL_SERVICE_ENDPOINT+'/prediction';
   public static URL_TEXT_DETECT:string = 'http://18.136.203.83:5001/api/readimage';
 
+  public static URL_LIST_SYMPTOMS:string = ConstantsProvider.URL_SERVICE_ENDPOINT+'/getallsymptoms';
 }

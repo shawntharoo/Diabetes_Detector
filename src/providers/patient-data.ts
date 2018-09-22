@@ -56,7 +56,27 @@ export class PatientData {
   patientSeCrReport(patinetEmail) {
     return this.db.list('PatientReports/'+ patinetEmail + '/report3');
   }
+  setPatientReport(reportType,value,user,reportName,symptoms,byteArray?){
+    console.log(user);
+    let userEmail = this.transform(user);
 
+    if(byteArray){
+      this.db.list('PatientReports/'+userEmail+'/'+reportType).push({
+        date: Date(),
+        [reportName]: value,
+        img:byteArray,
+        symptoms: symptoms 
+      })
+    }else{
+      this.db.list('PatientReports/'+userEmail+'/'+reportType).push({
+        date: Date(),
+        [reportName]: value,
+        symptoms: symptoms 
+
+      })
+    }
+    
+  }
   patientOCRFullReportFBS(reportData, user){
     var patientEmail = this.transform(user)
     this.db.list('PatientReports/'+ patientEmail + '/report3').push({
@@ -93,5 +113,17 @@ export class PatientData {
   lifestyleSuggesions(){
     return this.db.list('LifeStyles');
   }
-
+  getAllSymptoms(){
+    return new Promise((resolve,reject)=>{
+      this.http.get(ConstantsProvider.URL_LIST_SYMPTOMS,{})
+        .subscribe(data=>{
+          resolve(data)
+        },
+        err =>{
+          reject(err)
+        }
+        )
+    })
+    
+  }
 }
