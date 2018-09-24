@@ -1,11 +1,73 @@
 <ion-header>
   <ion-navbar>
+      <ion-buttons left>
+          <button ion-button icon-only navPop color="primary">
+            <ion-icon name="arrow-back"></ion-icon>
+          </button>
+        </ion-buttons>
     <ion-title>
-      About
+      {{patient.firstname}} {{patient.lastname}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <div class="empty--view" *ngIf="noReports">
+    All reports have been reviewed for this patient!
+  </div>
+    <ion-card *ngFor="let report of hba1cReports">
+        <img src="{{'data:image/jpeg;base64,'+report.img}}" />
+        <ion-card-content>
+          <ion-card-header>
+            <strong>{{report.date}} : HBA1C</strong>
+          </ion-card-header>
+          <div class="value">
+            Result: {{report.hba1c}}
+          </div><br>
+          <h3>Symptoms</h3>
+          <div class="symptoms" *ngFor="let symptom of report.symptoms">
+            {{symptom}}
+          </div>
+          <button ion-button color="primary" (click)="viewReport(report)">
+              View Report
+            </button>
+        </ion-card-content>
+      </ion-card>
+      <ion-card *ngFor="let report of scReports">
+        <img src="{{'data:image/jpeg;base64,'+report.img}}" />
+        <ion-card-content>
+          <ion-card-header>
+            <strong>{{report.date}} : Serum Creatinine</strong>
+          </ion-card-header>
+          <div class="value">
+            Result: {{report.secr}}
+          </div><br>
+          <h3>Symptoms</h3>
+          <div class="symptoms" *ngFor="let symptom of report.symptoms">
+            {{symptom}}
+          </div>
+          <button ion-button color="primary" (click)="viewReport(report)">
+              View Report
+            </button>
+        </ion-card-content>
+      </ion-card>
+      <ion-card *ngFor="let report of fbsReports">
+        <img src="{{'data:image/jpeg;base64,'+report.img}}" />
+        <ion-card-content>
+          <ion-card-header>
+            <strong>{{report.date}} : Full Blood Glucose</strong>
+          </ion-card-header>
+          <div class="value">
+            Result: {{report.fbs}}
+          </div><br>
+          <h3>Symptoms</h3>
+          <div class="symptoms" *ngFor="let symptom of report.symptoms">
+            {{symptom}}
+          </div>
+          <button ion-button color="primary" (click)="viewReport(report)">
+              View Report
+            </button>
+        </ion-card-content>
 
+      </ion-card>
 </ion-content>

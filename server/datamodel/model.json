@@ -88,5 +88,25 @@
         "feeling shaky"
       ]
     }
-  ]
+  ],
+  "medication": {
+    "common": {
+      "medicine": [
+        "Insulin",
+        "Pramlintide",
+        "Metformin",
+        "DPP -4 inhibitors",
+        "Albiglutide (Tanzeum)"
+      ]
+    },
+    "nephropathy": {
+      "medicine": ["Lisinopril", "Losartan", "Cozaar", "Avapro"]
+    },
+    "neuropathy": {
+      "medicine": ["Gabapentin", "Levocarnitine", "Carbamazepine", "Duloxetine"]
+    },
+    "retinopathy": {
+      "medicine": ["Lucentis","Eylea","Ranibizumab (ophthalmic)","Aflibercept ophthalmic"]
+    }
+  }
 }

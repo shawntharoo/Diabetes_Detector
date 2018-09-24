@@ -15,5 +15,6 @@ export class PatientPaymentPage {
     loadHomePage(){
         this.nav.push(PatientTabsPage);
         this.nav.setRoot(PatientTabsPage);
+        this.nav.popTo(PatientTabsPage)
     }
 }

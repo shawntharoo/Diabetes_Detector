@@ -22,6 +22,7 @@ export class DoctorHomePage {
     afAuth.authState.subscribe(user => {
     this.doctorData.patientNotification(user).valueChanges().subscribe(item => {
       this.items = item
+      console.log(this.items)
     });
   });
   }

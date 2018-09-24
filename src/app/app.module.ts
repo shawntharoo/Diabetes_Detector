@@ -47,7 +47,7 @@ import { IAgreePage } from "../pages/common/IAgree/iagree";
 import { GetTextFromReportProvider } from "../providers/get-text-from-report/get-text-from-report";
 import { ConstantsProvider } from "../providers/constants/constants";
 import { SymptomsModalPageModule } from "../pages/symptoms-modal/symptoms-modal.module";
-
+import { DoctorViewReportPage } from '../pages/doctor-view-report/doctor-view-report';
 import {DatePipe} from '@angular/common';
 @NgModule({
   declarations: [
@@ -76,10 +76,11 @@ import {DatePipe} from '@angular/common';
     EditDoctorProfilePage,
     Prescription,
     LifestylePage,
-    IAgreePage
+    IAgreePage,
+    DoctorViewReportPage
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     IonicModule.forRoot(MyApp, {
       tabsPlacement: "top",
       platforms: {
@@ -120,7 +121,8 @@ import {DatePipe} from '@angular/common';
     EditDoctorProfilePage,
     Prescription,
     LifestylePage,
-    IAgreePage
+    IAgreePage,
+    DoctorViewReportPage
   ],
   providers: [
     StatusBar,

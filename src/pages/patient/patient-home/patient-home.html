@@ -9,71 +9,150 @@
   <ion-navbar>
     <ion-title>Home</ion-title>
     <ion-buttons end hideWhen="android">
-        <button ion-button icon-only (click)="takePhoto()">
-            <ion-icon name="create"></ion-icon>
-    
-        </button>
-      </ion-buttons>
+      <button ion-button icon-only (click)="takePhoto()">
+        <ion-icon name="create"></ion-icon>
+
+      </button>
+    </ion-buttons>
   </ion-navbar>
- 
+
 </ion-header>
 
 <ion-content>
   <div class="top--container">
   </div>
   <ion-card *ngFor="let report of hba1cReports">
-    <img src="{{'data:image/jpeg;base64,'+report.img}}"/>
+    <img src="{{'data:image/jpeg;base64,'+report.img}}" />
     <ion-card-content>
-        <ion-card-header>
-            <strong>{{report.date}} : HBA1C</strong>
-          </ion-card-header>
-          <div class="value">
-              Result: {{report.hba1c}}
-          </div><br>
-          <h3>Symptoms</h3>
-          <div class="symptoms" *ngFor="let symptom of report.symptoms">
-              {{symptom}}
-            </div>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+            Date
+          </ion-label>
+          <div item-content>
+            {{report.date}}
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Report Result
+          </ion-label>
+          <div item-content>
+            {{report.hba1c}} <strong>[HBA1C]</strong>
+          </div>
+        </ion-item>
+        <ion-item-divider color="primary" *ngIf="report.symptoms">
+          Symptoms
+        </ion-item-divider>
+        <ion-item *ngFor="let symptom of report.symptoms" >{{symptom}}</ion-item>
+        <ion-item *ngIf="report.complication">
+          <ion-label>
+            Complication
+          </ion-label>
+          <div item-content>
+            {{report.complication}}
+          </div>
+        </ion-item>
+        <ion-item-divider color="primary" *ngIf="report.medication">
+            Suggested Medicine
+          </ion-item-divider>
+          <ion-item *ngFor="let pill of report.medication">
+            {{pill}}
+          </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngFor="let report of scReports">
-      <img src="{{'data:image/jpeg;base64,'+report.img}}"/>
+  <ion-card *ngFor="let report of fbsReports">
+      <img src="{{'data:image/jpeg;base64,'+report.img}}" />
       <ion-card-content>
-          <ion-card-header>
-              <strong>{{report.date}} : Serum Creatinine</strong>
-            </ion-card-header>
-            <div class="value">
-                Result: {{report.secr}}
-            </div><br>
-            <h3>Symptoms</h3>
-       <div class="symptoms" *ngFor="let symptom of report.symptoms">
-         {{symptom}}
-       </div>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              Date
+            </ion-label>
+            <div item-content>
+              {{report.date}}
+            </div>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              Report Result
+            </ion-label>
+            <div item-content>
+              {{report.fbs}} <strong>[FBS]</strong>
+            </div>
+          </ion-item>
+          <ion-item-divider color="primary" *ngIf="report.symptoms">
+            Symptoms
+          </ion-item-divider>
+          <ion-item *ngFor="let symptom of report.symptoms">{{symptom}}</ion-item>
+          <ion-item *ngIf="report.complication">
+            <ion-label>
+              Complication
+            </ion-label>
+            <div item-content>
+              {{report.complication}}
+            </div>
+          </ion-item>
+          <ion-item-divider color="primary" *ngIf="report.medication">
+              Suggested Medicine
+            </ion-item-divider>
+            <ion-item *ngFor="let pill of report.medication">
+              {{pill}}
+            </ion-item>
+        </ion-list>
       </ion-card-content>
-    </ion-card><ion-card *ngFor="let report of fbsReports">
-        <img src="{{'data:image/jpeg;base64,'+report.img}}"/>
+    </ion-card>
+    <ion-card *ngFor="let report of scReports">
+        <img src="{{'data:image/jpeg;base64,'+report.img}}" />
         <ion-card-content>
-            <ion-card-header>
-                <strong>{{report.date}} : Full Blood Glucose</strong>
-              </ion-card-header>
-              <div class="value">
-                  Result: {{report.fbs}}
-              </div><br>
-              <h3>Symptoms</h3>
-              <div class="symptoms" *ngFor="let symptom of report.symptoms">
-                  {{symptom}}
-                </div>
+          <ion-list>
+            <ion-item>
+              <ion-label>
+                Date
+              </ion-label>
+              <div item-content>
+                {{report.date}}
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                Report Result
+              </ion-label>
+              <div item-content>
+                {{report.secr}} <strong>[SERUM CREATININE]</strong>
+              </div>
+            </ion-item>
+            <ion-item-divider color="primary" *ngIf="report.symptoms">
+              Symptoms
+            </ion-item-divider>
+            <ion-item *ngFor="let symptom of report.symptoms">{{symptom}}</ion-item>
+            <ion-item *ngIf="report.complication">
+              <ion-label>
+                Complication
+              </ion-label>
+              <div item-content>
+                {{report.complication}}
+              </div>
+            </ion-item>
+            <ion-item-divider color="primary" *ngIf="report.medication">
+                Suggested Medicine
+              </ion-item-divider>
+              <ion-item *ngFor="let pill of report.medication">
+                {{pill}}
+              </ion-item>
+          </ion-list>
         </ion-card-content>
       </ion-card>
-      <ion-fab bottom right>
-        <button ion-fab (click)="callCam()" hideWhen="ios">
-          <ion-icon name="camera"></ion-icon>
-        </button>
-      </ion-fab>
+  <ion-fab bottom right>
+    <button ion-fab (click)="callCam()" hideWhen="ios">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>
 
 <ion-footer>
-    <button ion-button block clear (click)="logout()">
-        Logout
-      </button>
+  <button ion-button block clear (click)="logout()">
+    Logout
+  </button>
 </ion-footer>

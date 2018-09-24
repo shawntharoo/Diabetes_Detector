@@ -16,7 +16,7 @@ export class PatientData {
     public db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
     public http: HttpClient,
-    private datePipe:DatePipe
+    private datePipe: DatePipe
   ) {
     this.afAuth.authState.subscribe(user => {
       this.user = user;
@@ -52,7 +52,8 @@ export class PatientData {
       lastname: lastname,
       age: age,
       doctor: doctor,
-      status: 1
+      status: 1,
+      email: this.user.email
     });
   }
 
@@ -67,22 +68,44 @@ export class PatientData {
   patientSeCrReport(patinetEmail) {
     return this.db.list("PatientReports/" + patinetEmail + "/report3");
   }
-  setPatientReport(reportType, value, user, reportName, symptoms,date, byteArray?) {
+  setPatientReport(
+    reportType,
+    value,
+    user,
+    reportName,
+    symptoms,
+    date,
+    byteArray?
+  ) {
     console.log(user);
     let userEmail = this.transform(user);
-
+    let ref = this.db.list("PatientReports/" + userEmail + "/" + reportType).push({});
     if (byteArray) {
-      this.db.list("PatientReports/" + userEmail + "/" + reportType).push({
+      // this.db
+      //   .list("PatientReports/" + userEmail + "/" + reportType)
+      //   .push({
+      //     date: date,
+      //     [reportName]: value,
+      //     img: byteArray,
+      //     symptoms: symptoms,
+      //     status: "new",
+      //     id: pushId
+      //   })
+      ref.set({
         date: date,
         [reportName]: value,
         img: byteArray,
-        symptoms: symptoms
-      }).set(new Date().getTime());
+        symptoms: symptoms,
+        status: "new",
+        id: ref.key
+      })
     } else {
-      this.db.list("PatientReports/" + userEmail + "/" + reportType).push({
+      ref.set({
         date: date,
         [reportName]: value,
-        symptoms: symptoms
+        symptoms: symptoms,
+        status: "new",
+        id: ref.key
       });
     }
   }
@@ -134,11 +157,19 @@ export class PatientData {
       );
     });
   }
-  patientGetAllReports(user,type){
+  patientGetAllReports(user, type, status?) {
     let email = this.transform(user);
     console.log(email);
-    let itemsRef:AngularFireList<any>;
+    let itemsRef: AngularFireList<any>;
     let items: Observable<any[]>;
-    return this.db.list<Item>("PatientReports/"+email+"/"+type,ref=>ref.orderByChild('date'))
+    if (status) {
+      return this.db.list<Item>("PatientReports/" + email + "/" + type, ref =>
+        ref.orderByChild("status").equalTo(status)
+      );
+    } else {
+      return this.db.list<Item>("PatientReports/" + email + "/" + type, ref =>
+        ref.orderByChild("date")
+      );
+    }
   }
 }

@@ -1,0 +1,99 @@
+<!--
+  Generated template for the DoctorViewReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button icon-only navPop color="primary">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+          </ion-buttons>
+      <ion-title>
+        View Report
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+
+
+<ion-content padding>
+  <div class="img--report">
+    <img src="{{'data:image/jpeg;base64,'+reportData.img}}">
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Date
+      </ion-label>
+      <div item-content>
+        {{reportData.date}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Report Type
+      </ion-label>
+      <div item-content>
+        {{reportType}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Result
+      </ion-label>
+      <div item-content>
+        {{reportResult}}
+      </div>
+    </ion-item>
+    <ion-item-divider color="primary">
+      Symptoms
+      <button ion-button item-end outline color="light" (click)="getComplication(reportData.symptoms)">Get Complication</button>
+    </ion-item-divider>
+    <ion-item *ngFor="let symptom of reportData.symptoms">
+      {{symptom}}
+    </ion-item>
+    <ion-item *ngIf="hasCompli">
+      <ion-label color="primary">
+        Complication
+      </ion-label>
+      <div item-content>
+          {{compli}}
+      </div>
+     
+    </ion-item>
+    <ion-item *ngIf="enterCompli">
+      <ion-label>
+        Select Complication
+      </ion-label>
+      <ion-select [(ngModel)]="customComplication">
+        <ion-option value="nephropathy">Nephropathy</ion-option>
+        <ion-option value="neuropathy">Neuropathy</ion-option>
+        <ion-option value="retinopathy">Retinopathy</ion-option>
+        <ion-option value="diabetic ketoacidosis">Diabetic Ketoacidosis</ion-option>
+        <ion-option value="hyper">Hyper</ion-option>
+        <ion-option value="hyperosmolar hyperglycaemic state">Hyperosmolar Hyperglycaemic State</ion-option>
+        <ion-option value="hypo">Hypo</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item-divider color="primary">
+        Medicine
+        <button ion-button item-end outline color="light" (click)="getMedicine()">Suggest Medicine</button>
+      </ion-item-divider>
+    <ion-item *ngIf="hasMedic">
+      <ion-label>
+        Select Medicine
+      </ion-label>
+      <ion-select [(ngModel)]="selectedMedication" multiple>
+        <ion-option *ngFor="let pill of medication" [value]="pill">
+          {{pill}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+<button ion-button full color="primary" (click)="saveReport()">
+  Update Report
+</button>
+</ion-content>

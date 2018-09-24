@@ -3,7 +3,7 @@ import { DoctorAboutPatientPage } from './doctor-aboutpatient';
 
 @NgModule({
   declarations: [
-    DoctorAboutPatientPage,
+    DoctorAboutPatientPage
   ],
  
   exports: [

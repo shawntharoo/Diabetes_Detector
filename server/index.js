@@ -53,6 +53,7 @@ router.route('/test').get(function (req, res) {
 router.route('/getcomplication').post(dataModelReader.reader);
 
 router.route('/getallsymptoms').get(dataModelReader.getAllSymptoms);
+router.route('/getmedication').post(dataModelReader.getMedicine);
 /**
  * Prefix all router calls with 'api'
  */
