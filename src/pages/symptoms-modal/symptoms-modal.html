@@ -34,7 +34,19 @@
     </ion-item>
 
   </ion-list>
-  <button ion-button color="primary" (click)="submitData()">
+  <ion-card>
+    <img [src]="imgReport"/>
+    <ion-card-content>
+      <ion-card-title>
+        Uploaded Report
+        </ion-card-title>
+      <p>
+        Above is an image of the report you're about submit.
+      </p>
+    </ion-card-content>
+  </ion-card>
+  
+  <button ion-button color="primary" (click)="submitData()" full>
     Submit
   </button>
 </ion-content>

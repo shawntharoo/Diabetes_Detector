@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams, ViewController } from "ionic-angular";
 import { PatientData } from "../../providers/patient-data";
 import { AngularFireAuth } from "angularfire2/auth";
+import { DatePipe } from '@angular/common';
 
 /**
  * Generated class for the SymptomsModalPage page.
@@ -19,15 +20,17 @@ export class SymptomsModalPage {
   public allSymptoms:any = [];
   public dataFromPrev;
   public selectedSymptoms = [];
+  public imgReport:string;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private patientData: PatientData,
     private afAuth:AngularFireAuth,
-    private viewCtrl:ViewController
+    private viewCtrl:ViewController,
+    private datePipe:DatePipe
   ) {
     this.dataFromPrev = navParams.get("data");
-    console.log(navParams.get("data"));
+    this.imgReport = "data:image/jpeg;base64,"+this.dataFromPrev.imgData;
   }
 
   ionViewDidLoad() {
@@ -45,7 +48,8 @@ export class SymptomsModalPage {
         this.dataFromPrev.reportVal,
         user.email,
         this.dataFromPrev.reportType,
-        this.selectedSymptoms
+        this.selectedSymptoms,
+        this.dateGen(),this.dataFromPrev.imgData
       )
     });
     this.viewCtrl.dismiss();
@@ -63,4 +67,8 @@ export class SymptomsModalPage {
       }
     }
   }
+  dateGen(){
+    return this.datePipe.transform(new Date(),'dd/MM/yyyy');
+  }
+
 }

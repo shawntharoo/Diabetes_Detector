@@ -21,22 +21,50 @@
 <ion-content>
   <div class="top--container">
   </div>
-  <ion-card *ngIf="showCard">
-    <img [src]="base64Image"/>
+  <ion-card *ngFor="let report of hba1cReports">
+    <img src="{{'data:image/jpeg;base64,'+report.img}}"/>
     <ion-card-content>
-      {{visionres}}
+        <ion-card-header>
+            <strong>{{report.date}} : HBA1C</strong>
+          </ion-card-header>
+          <div class="value">
+              Result: {{report.hba1c}}
+          </div><br>
+          <h3>Symptoms</h3>
+          <div class="symptoms" *ngFor="let symptom of report.symptoms">
+              {{symptom}}
+            </div>
     </ion-card-content>
   </ion-card>
-  
-    <!-- <ion-card *ngFor="let item of items | async">
-        <img [src]="'data:image/png;base64,' + item.imageData"/>
+  <ion-card *ngFor="let report of scReports">
+      <img src="{{'data:image/jpeg;base64,'+report.img}}"/>
+      <ion-card-content>
+          <ion-card-header>
+              <strong>{{report.date}} : Serum Creatinine</strong>
+            </ion-card-header>
+            <div class="value">
+                Result: {{report.secr}}
+            </div><br>
+            <h3>Symptoms</h3>
+       <div class="symptoms" *ngFor="let symptom of report.symptoms">
+         {{symptom}}
+       </div>
+      </ion-card-content>
+    </ion-card><ion-card *ngFor="let report of fbsReports">
+        <img src="{{'data:image/jpeg;base64,'+report.img}}"/>
         <ion-card-content>
-          <ion-list no-lines>
-            <ion-list-header>Labels</ion-list-header>
-            <ion-item *ngFor="let label of item.results[0].labelAnnotations">{{label.description}}</ion-item>
-          </ion-list>
+            <ion-card-header>
+                <strong>{{report.date}} : Full Blood Glucose</strong>
+              </ion-card-header>
+              <div class="value">
+                  Result: {{report.fbs}}
+              </div><br>
+              <h3>Symptoms</h3>
+              <div class="symptoms" *ngFor="let symptom of report.symptoms">
+                  {{symptom}}
+                </div>
         </ion-card-content>
-      </ion-card> -->
+      </ion-card>
       <ion-fab bottom right>
         <button ion-fab (click)="callCam()" hideWhen="ios">
           <ion-icon name="camera"></ion-icon>

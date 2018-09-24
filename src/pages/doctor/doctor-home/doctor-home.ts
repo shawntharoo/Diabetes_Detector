@@ -17,6 +17,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class DoctorHomePage {
   items: any[]
+
   constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public authData: AuthData , public doctorData: DoctorData, public modalCtrl: ModalController, public afAuth: AngularFireAuth) {
     afAuth.authState.subscribe(user => {
     this.doctorData.patientNotification(user).valueChanges().subscribe(item => {

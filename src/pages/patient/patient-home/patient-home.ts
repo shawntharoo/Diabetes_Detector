@@ -21,6 +21,10 @@ export class PatientHomePage {
   base64Image: any;
   showCard: boolean = false;
   reportType: string = "";
+  allReports: any = [];
+  fbsReports:any;
+  hba1cReports:any;
+  scReports:any;
   constructor(
     public navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
@@ -33,8 +37,8 @@ export class PatientHomePage {
     public getTxtFrmRep: GetTextFromReportProvider,
     public alertCtrl: AlertController
   ) {}
-  ionViewDidEnter(){
-   
+  ionViewDidEnter() {
+    this.getAllReports();
   }
   callCam() {
     let alert = this.alertCtrl.create();
@@ -65,7 +69,7 @@ export class PatientHomePage {
         this.reportType = data;
         switch (data) {
           case "hba1c": {
-            this.takePhoto('["HBA1C"]');
+            this.takePhoto('["HBA1C","GLYCOSYLATED","HEMOGLOBIN"]');
             break;
           }
           case "fbs": {
@@ -77,7 +81,6 @@ export class PatientHomePage {
             break;
           }
         }
-        this.takePhoto(data);
       }
     });
     alert.addButton("Cancel");
@@ -88,58 +91,40 @@ export class PatientHomePage {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      targetWidth: 500,
+      saveToPhotoAlbum: false,
+      correctOrientation: true
+      // quality: 100,
+      // targetWidth:595,
+      // targetHeight:842,
+      // sourceType: this.camera.PictureSourceType.CAMERA,
+      // //destinationType: this.camera.DestinationType.DATA_URL,
+      // encodingType: this.camera.EncodingType.JPEG,
     };
     this.camera.getPicture(options).then(
       imageData => {
-        // this.vision.getLabels(imageData).subscribe((result) => {
-        //   this.base64Image = 'data:image/jpeg;base64,' + imageData;
-        //   this.visionres = result.json().responses[0].textAnnotations[0].description;
-        //   this.afAuth.authState.subscribe(user => {
-        //     this.patientData.patientOCRFullReportFBS(this.visionres, user.email)
-        //     this.showCard = true;
-        //   })
-        // }, err => {
-        //   console.log(err);
-        // });
+        // this.alertError(imageData);
         this.getTxtFrmRep
           .getText(imageData, JSON.parse(searchTerms))
           .then(response => {
-            this.showSymptomsModal(this.reportType,response);
+            let res: any = response;
+            this.alertError(JSON.stringify(response));
+            this.showSymptomsModal(
+              this.reportType,
+              res.extracted_value,
+              imageData
+            );
           })
           .catch(error => {
-            this.visionres = JSON.stringify(error);
+            this.alertError(JSON.stringify(error));
+            this.alertInputReportVal(imageData);
           });
       },
       err => {
-        console.error("camera failed " + err);
-        let alert = this.alertCtrl.create();
-        alert.setTitle("Error getting report value");
-
-        alert.addInput({
-          name: "reportVal",
-          placeholder: "Report Value"
-        });
-        alert.addButton({
-          text: "Cancel",
-          role: "cancel"
-        });
-        alert.addButton({
-          text: "Submit",
-          handler: data => {
-            // this.afAuth.authState.subscribe(user => {
-            //   this.patientData.setPatientReport(
-            //     this.getReportNumber(this.reportType),
-            //     data.reportVal,
-            //     user.email,
-            //     this.reportType
-            //   );
-            // });
-            this.showSymptomsModal(this.reportType,data.reportVal);
-            // alert.dismiss();
-          }
-        });
-        alert.present();
+        this.alertError(JSON.stringify(err));
+        this.alertInputReportVal();
       }
     );
   }
@@ -180,14 +165,74 @@ export class PatientHomePage {
       }
     }
   }
-  showSymptomsModal(reportType, reportVal) {
+  showSymptomsModal(reportType, reportVal, imgData?) {
     const params = {
-      reportType:reportType,
-      reportVal:reportVal
-    }
+      reportType: reportType,
+      reportVal: reportVal,
+      imgData: imgData
+    };
     let symptomsModal = this.modalCtrl.create(SymptomsModalPage, {
       data: params
     });
     symptomsModal.present();
+  }
+  alertError(error) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle("Error uploading image");
+    alert.setMessage(error);
+    alert.addButton({
+      text: "Ok",
+      role: "cancel"
+    });
+    alert.present();
+  }
+  alertInputReportVal(imgData?) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle("Error getting report value");
+
+    alert.addInput({
+      name: "reportVal",
+      placeholder: "Report Value"
+    });
+    alert.addButton({
+      text: "Cancel",
+      role: "cancel"
+    });
+    alert.addButton({
+      text: "Submit",
+      handler: data => {
+        if (imgData) {
+          this.showSymptomsModal(this.reportType, data.reportVal, imgData);
+        } else {
+          this.showSymptomsModal(this.reportType, data.reportVal);
+        }
+
+        // alert.dismiss();
+      }
+    });
+    alert.present();
+  }
+  getAllReports() {
+    this.afAuth.authState.subscribe(user => {
+      this.patientData
+        .patientGetAllReports(user.email, "report1")
+        .valueChanges()
+        .subscribe(reports => {
+         this.hba1cReports = reports;
+          console.log(this.hba1cReports);
+        });
+      this.patientData
+        .patientGetAllReports(user.email, "report2")
+        .valueChanges()
+        .subscribe(reports => {
+          this.fbsReports = reports;
+        });
+      this.patientData
+        .patientGetAllReports(user.email, "report3")
+        .valueChanges()
+        .subscribe(reports => {
+          this.scReports = reports;
+        });
+    });
   }
 }
