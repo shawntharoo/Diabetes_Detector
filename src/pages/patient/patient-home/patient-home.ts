@@ -110,7 +110,7 @@ export class PatientHomePage {
           .getText(imageData, JSON.parse(searchTerms))
           .then(response => {
             let res: any = response;
-            this.alertError(JSON.stringify(response));
+            //this.alertError(JSON.stringify(response));
             this.showSymptomsModal(
               this.reportType,
               res.extracted_value,
@@ -118,12 +118,12 @@ export class PatientHomePage {
             );
           })
           .catch(error => {
-            this.alertError(JSON.stringify(error));
+            //this.alertError(JSON.stringify(error));
             this.alertInputReportVal(imageData);
           });
       },
       err => {
-        this.alertError(JSON.stringify(err));
+        //this.alertError(JSON.stringify(err));
         this.alertInputReportVal();
       }
     );
