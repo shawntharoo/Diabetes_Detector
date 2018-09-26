@@ -1,45 +1,45 @@
 page-doctorlogin {
-    ion-content{
-        background-color:color($colors,primary) !important;
-        .logo {
-            img {
-                width: 140px;
-            }
-        }
-        .tagline {
-            font-size: 1.7rem;
-            font-weight: 300;
-        }
-        .login--button {
-            width: 75%;
-            border-radius: 6px;
-            border: 1px solid #fff;
-            color: #fff;
+    // ion-content{
+    //     background-color:color($colors,primary) !important;
+    //     .logo {
+    //         img {
+    //             width: 140px;
+    //         }
+    //     }
+    //     .tagline {
+    //         font-size: 1.7rem;
+    //         font-weight: 300;
+    //     }
+    //     .login--button {
+    //         width: 75%;
+    //         border-radius: 6px;
+    //         border: 1px solid #fff;
+    //         color: #fff;
             
-            span {
-                font-weight: 300 !important;
-                span{
-                    font-weight:700 !important;
-                }
-            }
-        }
-        ion-item{
-            background-color:transparent !important;
-            ion-label{
-                color:color($colors,secondary)
-            }
-            ion-input{
-                color:color($colors,secondary);
+    //         span {
+    //             font-weight: 300 !important;
+    //             span{
+    //                 font-weight:700 !important;
+    //             }
+    //         }
+    //     }
+    //     ion-item{
+    //         background-color:transparent !important;
+    //         ion-label{
+    //             color:color($colors,secondary)
+    //         }
+    //         ion-input{
+    //             color:color($colors,secondary);
 
-            }
-            .item-inner{
-                border-bottom: 0.55px solid color($colors,secondary) !important;
-            }
-        }
-        ion-grid {
-            height: 100%;
-            justify-content: center;
-        }
-        color: color($colors,secondary) !important;
-    }
+    //         }
+    //         .item-inner{
+    //             border-bottom: 0.55px solid color($colors,secondary) !important;
+    //         }
+    //     }
+    //     ion-grid {
+    //         height: 100%;
+    //         justify-content: center;
+    //     }
+    //     color: color($colors,secondary) !important;
+    // }
 }
