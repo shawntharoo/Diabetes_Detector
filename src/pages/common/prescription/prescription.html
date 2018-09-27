@@ -18,15 +18,15 @@
     <ion-list-header>
       Symptoms
     </ion-list-header>
-    <ion-item *ngFor="let symptom of prescription[1]"> <ion-icon name="done-all" item-start large ></ion-icon> {{symptom}}</ion-item>
+    <ion-item *ngFor="let symptom of report.symptoms"> <ion-icon name="done-all" item-start large ></ion-icon> {{symptom}}</ion-item>
   </ion-list>
-  <ion-list>
+  <ion-list *ngIf="prescription">
     <ion-list-header>
       Medicines
     </ion-list-header>
     <ion-item  *ngFor="let medicine of prescription[2]"> <ion-icon name="done-all" item-start large ></ion-icon> {{medicine}}</ion-item>
   </ion-list>
-  <ion-list>
+  <ion-list  *ngIf="prescription">
     <ion-list-header>
       Additional Notes
     </ion-list-header>

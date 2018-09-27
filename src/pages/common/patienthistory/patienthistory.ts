@@ -68,7 +68,7 @@ export class PatientHistoryPage {
     var day = date.getDate();
     let monthIndex : number = date.getMonth();
     var year = date.getFullYear();
-    var month = monthIndex + 1;
+    let month : any = monthIndex + 1;
     return year + '-' + month + '-' + day;
   }
 
