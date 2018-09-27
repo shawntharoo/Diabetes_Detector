@@ -15,7 +15,7 @@
     </ion-card-header>
     <ion-card-content>
       <canvas #FBSlineCanvas></canvas>
-      <p *ngIf="fbsForecast" class="forecastTitle">FBS Forecasted Value :</p>  <span class="forecastValue">{{fbsForecast |  number:'3.2-2'}}</span>
+      <p *ngIf="fbsForecast" class="forecastTitle">FBS Forecasted Value : <span class="forecastValue">{{fbsForecast |  number:'3.2-2'}}</span></p> 
       <br/><br/>
       <h3 *ngIf = "lifestyle" class="forecastTitle" (click)="openLifestyle(lifestyle)">Click to view lifestyle</h3>
       <!-- <p *ngIf = "lifestyle"><b>{{lifestyle.description}}</b></p> -->
@@ -28,7 +28,7 @@
     </ion-card-header>
     <ion-card-content>
       <canvas #HBA1ClineCanvas></canvas>
-      <p *ngIf="hba1cForecast" class="forecastTitle">HBA1C Forecasted Value : </p> <span class="forecastValue">{{hba1cForecast | number:'3.2-2'}}</span>
+      <p *ngIf="hba1cForecast" class="forecastTitle">HBA1C Forecasted Value : <span class="forecastValue">{{hba1cForecast | number:'3.2-2'}}</span></p> 
     </ion-card-content>
   </ion-card>
 
@@ -38,7 +38,7 @@
     </ion-card-header>
     <ion-card-content>
       <canvas #SeCrlineCanvas></canvas>
-      <p *ngIf="serCreatineForecast" class="forecastTitle">Serum Creatinine Forecasted Value : </p> <span class="forecastValue">{{serCreatineForecast | number:'3.2-2'}}</span>
+      <p *ngIf="serCreatineForecast" class="forecastTitle">Serum Creatinine Forecasted Value :  <span class="forecastValue">{{serCreatineForecast | number:'3.2-2'}}</span></p>
     </ion-card-content>
   </ion-card>
 

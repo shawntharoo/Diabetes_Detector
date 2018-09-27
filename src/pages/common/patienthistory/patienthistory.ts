@@ -66,9 +66,10 @@ export class PatientHistoryPage {
     ];
 
     var day = date.getDate();
-    var monthIndex = date.getMonth();
+    let monthIndex : number = date.getMonth();
     var year = date.getFullYear();
-    return year + '-' + monthIndex + '-' + day;
+    let month : any = monthIndex + 1;
+    return year + '-' + month + '-' + day;
   }
 
   ionViewDidLoad() {
