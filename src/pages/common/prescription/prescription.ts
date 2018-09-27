@@ -12,6 +12,7 @@ export class Prescription {
 
   constructor(public navCtrl: NavController, public params: NavParams, public viewCtrl: ViewController, public patientDta: PatientData) {
     this.report = params.get('Report');
+    console.log(this.report);
     this.patientDta.patientPrescription(this.report.prescription).valueChanges().subscribe(prescription => {
     console.log(prescription);
       this.prescription = prescription;

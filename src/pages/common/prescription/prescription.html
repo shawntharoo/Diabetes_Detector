@@ -13,12 +13,12 @@
   <ion-list>
       <ion-item-divider color="devider">
           Report date
-          <p item-end>{{report.date}}</p>
+          <p item-end>{{report[0].date}}</p>
         </ion-item-divider>
     <ion-list-header>
       Symptoms
     </ion-list-header>
-    <ion-item *ngFor="let symptom of report.symptoms"> <ion-icon name="done-all" item-start large ></ion-icon> {{symptom}}</ion-item>
+    <ion-item *ngFor="let symptom of report[0].symptoms"> <ion-icon name="done-all" item-start large ></ion-icon> {{symptom}}</ion-item>
   </ion-list>
   <ion-list *ngIf="prescription">
     <ion-list-header>
