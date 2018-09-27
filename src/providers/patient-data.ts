@@ -95,23 +95,23 @@ export class PatientData {
       //   })
       ref.set({
         date: date,
-        [reportName]: value,
+        [reportName]: parseInt(value,10),
         img: byteArray,
         symptoms: symptoms,
         status: "new",
         id: ref.key,
         ppbs: 0,
-        serCret:0
+        serUricAcid:0
       })
     } else {
       ref.set({
         date: date,
-        [reportName]: value,
+        [reportName]: parseInt(value,10),
         symptoms: symptoms,
         status: "new",
         id: ref.key,
         ppbs: 0,
-        serCret:0
+        serUricAcid:0
       });
     }
   }
