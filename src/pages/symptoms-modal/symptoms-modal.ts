@@ -98,6 +98,6 @@ export class SymptomsModalPage {
     }
   }
   dateGen() {
-    return this.datePipe.transform(new Date(), "dd/MM/yyyy");
+    return this.datePipe.transform(new Date(), "MM/dd/yyyy");
   }
 }
