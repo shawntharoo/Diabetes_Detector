@@ -75,8 +75,10 @@ export class PatientData {
     reportName,
     symptoms,
     date,
-    byteArray?
+    byteArray?,
+    extraparams?
   ) {
+    console.log(JSON.stringify(extraparams))
     console.log(user);
     let userEmail = this.transform(user);
     let ref = this.db.list("PatientReports/" + userEmail + "/" + reportType).push({});
@@ -97,7 +99,9 @@ export class PatientData {
         img: byteArray,
         symptoms: symptoms,
         status: "new",
-        id: ref.key
+        id: ref.key,
+        ppbs: 0,
+        serCret:0
       })
     } else {
       ref.set({
@@ -105,7 +109,9 @@ export class PatientData {
         [reportName]: value,
         symptoms: symptoms,
         status: "new",
-        id: ref.key
+        id: ref.key,
+        ppbs: 0,
+        serCret:0
       });
     }
   }

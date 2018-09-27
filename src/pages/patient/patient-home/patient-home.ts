@@ -47,14 +47,14 @@ export class PatientHomePage {
     alert.addInput({
       type: "radio",
       label: "HBA1C",
-      value: "hba1c",
+      value: "hb1ac",
       checked: true
     });
 
     alert.addInput({
       type: "radio",
       label: "Serum Creatinine",
-      value: "secr"
+      value: "serCret"
     });
 
     alert.addInput({
@@ -68,7 +68,7 @@ export class PatientHomePage {
         console.log(data);
         this.reportType = data;
         switch (data) {
-          case "hba1c": {
+          case "hb1ac": {
             this.takePhoto('["HBA1C","GLYCOSYLATED","HEMOGLOBIN"]');
             break;
           }
@@ -76,7 +76,7 @@ export class PatientHomePage {
             this.takePhoto('["FASTING","BLOOD","GLUCOSE"]');
             break;
           }
-          case "secr": {
+          case "serCret": {
             this.takePhoto('["SERUM","CREATININE"]');
             break;
           }
@@ -160,7 +160,7 @@ export class PatientHomePage {
       case "fbs": {
         return "report2";
       }
-      case "secr": {
+      case "serCret": {
         return "report3";
       }
     }

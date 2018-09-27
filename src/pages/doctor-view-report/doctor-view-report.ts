@@ -30,7 +30,7 @@ export class DoctorViewReportPage {
     this.reportData = navParams.get("data");
     this.patientEmail = navParams.get("email");
     Object.keys(this.reportData).forEach(el=>{
-      if(el.indexOf("hba1c")!=-1 || el.indexOf("fbs")!=-1 || el.indexOf("secr")!=-1){
+      if(el.indexOf("hb1ac")!=-1 || el.indexOf("fbs")!=-1 || el.indexOf("serCret")!=-1){
         this.reportType = el;
         this.reportResult = this.reportData[el]
       }
