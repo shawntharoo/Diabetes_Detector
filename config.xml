@@ -76,16 +76,16 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
-        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
             <string>need camera access to take pictures</string>
         </edit-config>
-        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
             <string>need photo library access to get pictures from there</string>
         </edit-config>
-        <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
             <string>need location access to find things nearby</string>
         </edit-config>
-        <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
             <string>need photo library access to save pictures there</string>
         </edit-config>
     </platform>
@@ -95,6 +95,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.19" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="7.0.0" />
+    <engine name="ios" spec="4.5.5" />
 </widget>
