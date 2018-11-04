@@ -1,6 +1,7 @@
 var dataModel = require("./model");
 exports.reader = function(req, res) {
   const symptoms = req.body;
+  console.log(symptoms)
   let complicationName = null;
   if (symptoms.length >= 3) {
     dataModel.complications.forEach(element => {
