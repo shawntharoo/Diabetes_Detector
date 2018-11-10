@@ -93,8 +93,8 @@ export class PatientHomePage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      targetWidth: 780,
-      targetHeight:1040,
+      targetWidth: 500,
+      targetHeight:1063,
       saveToPhotoAlbum: false,
       correctOrientation: true
       // quality: 100,
